@@ -8,6 +8,9 @@ struct complexo{
 };
 
 Complexo *criar(double real, double imag){
+	
+	printf("Complexo *criar")	
+	
 	Complexo *p = (Complexo *) malloc(sizeof(Complexo));
 	p->real = real;
 	p->imag = imag;
@@ -61,6 +64,6 @@ void atribuir_imag(Complexo *p, double imag){
 	p->imag = imag;
 }
 
-void print_complexo(Complexo *p){
-	printf("COMPLEXO: %.1lf + i%.1lf\n", p->real, p->imag);
+void print(Complexo *p){
+	printf("%.1lf + i%.1lf\n", p->real, p->imag);
 }
