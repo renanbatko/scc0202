@@ -18,6 +18,7 @@ Lista *cria(){
 }
 
 void libera(Lista *p){
+	//printf("void libera(Lista *p)\n");
 	free(p);
 }
 
@@ -130,6 +131,7 @@ int remove_final(Lista *p){
 
 void print(Lista *p){
 	int i;
+	printf("\n");
 	for (i = 0; i < p->qtd; i++){
 		printf("(%d, %s)\n", p->dados[i].nusp, p->dados[i].nome);
 	}
