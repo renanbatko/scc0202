@@ -6,7 +6,7 @@ int main(void){
 	struct aluno bixo;
 	
 	Lista *li;
-	li = cria();
+	li = criar();
 	
 	for (i = 0; i < N; i++){
 		scanf(" %d %s", &bixo.nusp, bixo.nome);

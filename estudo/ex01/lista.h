@@ -5,9 +5,6 @@
 struct aluno{
 	int nusp;
 	char nome[30];
-	float n1;
-	float n2;
-	float n3;
 };
 typedef struct lista Lista;
 
@@ -20,5 +17,19 @@ int tamanho(Lista *);
 int cheia(Lista *);
 
 int vazia(Lista *);
+
+int insere_inicio(Lista *, struct aluno);
+
+int insere_meio(Lista *, struct aluno, int);
+
+int insere_final(Lista *, struct aluno);
+
+int remove_inicio(Lista *);
+
+int remove_meio(Lista *, int);
+
+int remove_final(Lista *);
+
+void print(Lista *);
 
 #endif
