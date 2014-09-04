@@ -57,5 +57,9 @@ int main(void){
 	imprime(lista);
 	printf("\n");
 	
+	int temp;
+	temp = seek(lista, 66);
+	printf("temp = %d\n", temp);
+	
 	return 0;
 }

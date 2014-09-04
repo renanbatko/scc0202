@@ -45,6 +45,31 @@ void busca_remove(celula *ini, int elem){
 	}
 }
 
+void busca_insere(celula *ini, int elem, int novo){
+	celula *p, *q, *nova;
+	nova = (celula *) malloc(sizeof(celula));
+	nova->dado = novo;
+	p = ini;
+	q = ini->prox;
+	while (q != NULL && q->dado != elem){
+		p = q;
+		q = q->prox;
+	}
+	nova->prox = q;
+	p->prox = nova;
+}
+
+int seek(celula *ini, int n){
+	celula *p;
+	p = ini;
+	while (p != NULL){
+		if (p->dado == n){
+			return 1;
+		}
+		p = p->prox;
+	}
+}
+
 void imprime(celula *ini){
 	celula *p = ini->prox;
 	while (p != NULL){

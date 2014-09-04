@@ -1,0 +1,33 @@
+#ifndef LISTA_H
+#define LISTA_H
+#define MAX 50
+
+typedef struct lista Lista;
+
+void criar_lista(Lista *);
+
+int inserir_fim(Lista *, struct livro *);
+
+int inserir_ordenado(Lista *, struct livro *);
+
+int inserir_posicao(Lista *, int, struct livro *);
+
+int remover_fim(Lista *);
+
+int remover_posicao(Lista *, int);
+
+int busca_sequencial(int, Lista *);
+
+int busca_ordenada(int, Lista *);
+
+int busca_binaria(int, Lista *);
+
+int tamanho(Lista *);
+
+int vazia(Lista *);
+
+int cheia(Lista *);
+
+void imprimir(Lista *);
+
+#endif

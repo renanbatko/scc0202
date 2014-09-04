@@ -59,6 +59,18 @@ void busca_insere(celula *ini, int elem, int novo){
 	p->prox = nova;
 }
 
+int seek(celula *ini, int n){
+	celula *p;
+	p = ini;
+	while (p != NULL){
+		if (p->dado == n){
+			return 1;
+		}
+		p = p->prox;
+	}
+	return 0;
+}
+
 void imprime(celula *ini){
 	celula *p = ini->prox;
 	while (p != NULL){

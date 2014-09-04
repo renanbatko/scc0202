@@ -1,0 +1,14 @@
+#include "lista.h"
+#include <stdlib.h>
+#include <stdio.h>
+
+struct livro{
+	int codigo;
+	char nome[50];
+	int qtd;
+};
+
+struct lista{
+	struct livro item[MAX];
+	int qtd;
+}

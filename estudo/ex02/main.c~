@@ -49,5 +49,17 @@ int main(void){
 	imprime(lista);
 	printf("\n");
 	
+	busca_insere(lista, 0, 66);
+	imprime(lista);
+	printf("\n");
+	
+	busca_insere(lista, 78, 1);
+	imprime(lista);
+	printf("\n");
+	
+	int temp;
+	temp = seek(lista, 44);
+	printf("temp = %d\n", temp);
+	
 	return 0;
 }

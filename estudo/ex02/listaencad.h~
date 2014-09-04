@@ -11,7 +11,7 @@ void remover(celula *);
 
 void busca_remove(celula *, int);
 
-void busca_insere(celula *, int);
+void busca_insere(celula *, int, int);
 
 void imprime(celula *);
 

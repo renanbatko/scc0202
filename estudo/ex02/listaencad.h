@@ -15,5 +15,7 @@ void busca_insere(celula *, int, int);
 
 void imprime(celula *);
 
+int seek(celula *, int);
+
 #endif
 
