@@ -3,14 +3,14 @@
 #include <stdio.h>
 
 void criar_lista(lista_estatica *lista){
-	lista = (lista_estatica *) malloc(sizeof(lista_estatica));
+	//lista = (lista_estatica *) malloc(sizeof(lista_estatica));
 	lista->primeiro = 0;
 	lista->ultimo = 0;
 }
 
 int inserir_fim(lista_estatica *lista, livro *codigo){
 	if (cheia(lista) == 0){
-		Item[lista->ultimo] = *codigo;
+		lista->Item[lista->ultimo] = *codigo;
 		lista->ultimo++;
 		return 1;
 	}
@@ -102,15 +102,16 @@ int busca_ordenada(tipo_chave x, lista_estatica *lista){
 
 int busca_binaria(tipo_chave x, lista_estatica *lista){
 	//insertion sort
-	int i, j, temp;
+	int i, j;
+	livro temp;
 	for (j = 1; j < lista->ultimo; j++){
-		temp = lista->Item[j].codigo;
+		temp = lista->Item[j];
 		i = j - 1;
 		while (i >= 0 && lista->Item[i].codigo > temp){
-			lista->Item[i+1].codigo = lista->Item[i].codigo;
+			lista->Item[i+1] = lista->Item[i];
 			i--;
 		}
-		lista->Item[i+1].codigo = temp;
+		lista->Item[i+1] = temp;
 	}
 	//end insertion sort
 	
