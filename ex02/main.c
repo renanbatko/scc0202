@@ -11,7 +11,7 @@
 int main(void){
 	livro *a = (livro *) malloc(sizeof(livro));
 	
-	lista_estatica *li = (lista_estatica *) malloc(sizeof(lista_estatica));;
+	lista_estatica *li = (lista_estatica *) malloc(sizeof(lista_estatica));
 	criar_lista(li);
 	
 	int i;
@@ -31,6 +31,8 @@ int main(void){
 	printf("\n\n");
 	remover_fim(li);
 	imprimir(li);
+	
+	free(li);
 		
 	return 0;
 }

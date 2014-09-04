@@ -28,8 +28,11 @@ int main(void){
 	
 	remover_posicao(li, 1);
 	imprimir(li);
+	printf("\n\n");
 	remover_fim(li);
 	imprimir(li);
+	
+	free(li);
 		
 	return 0;
 }
