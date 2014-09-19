@@ -1,5 +1,0 @@
-all:
-	@gcc -c listaestatica.c
-
-run:
-	@./programa > $(RUNCODES_OUTPUT)
