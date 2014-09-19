@@ -85,6 +85,32 @@ boolean remover_item(LISTA_DINAMICA *lista, int chave){
 	return FALSE;
 }
 
+void swap(NO *p, NO *q){
+	NO *aux;
+	aux = p->proximo;
+	p->proximo = q->proximo;
+	q->proximo = aux;
+}
+
+void ordenar_lista(LISTA_DINAMICA *lista){
+	NO *ini, *elem, *p, *q, *temp;
+	ini = lista->inicio;
+	p = ini->proximo;
+	
+	while (p != NULL){
+		elem = p;
+		q = elem;
+		while (q != NULL){
+			temp = q;
+			if (temp->item.chave > elem->item.chave){
+				swap(temp, elem);
+			}
+			q = q->proximo;
+		}
+		p = p->proximo;
+	}
+}
+
 LISTA_DINAMICA *uniao_sem_repeticao(LISTA_DINAMICA *L1, LISTA_DINAMICA *L2, LISTA_DINAMICA *L3){
 
 }
@@ -94,23 +120,29 @@ LISTA_DINAMICA *uniao_com_repeticao(LISTA_DINAMICA *L1, LISTA_DINAMICA *L2, LIST
 }
 
 int tamanho(LISTA_DINAMICA *lista){
-
+	return lista->tamanho;
 }
 
 boolean vazia(LISTA_DINAMICA *lista){
-
+	return (lista->tamanho == 0)
 }
 
 boolean cheia(LISTA_DINAMICA *lista){
-
+	return FALSE;
 }
 
 void imprimir_lista(LISTA_DINAMICA *lista){
-
+	NO *p;
+	p = lista->inicio;
+	
+	while (p != NULL){
+		printf("[%d, %d]-> ", p->item.chave, p->item.info);
+		p = p->proximo;
+	}
 }
 
 void imprimir_invertida(LISTA_DINAMICA *lista){
-
+	
 }
 
 TIPO_ITEM *recuperar_item(LISTA_DINAMICA *lista, int chave){

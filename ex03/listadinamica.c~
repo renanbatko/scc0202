@@ -85,6 +85,32 @@ boolean remover_item(LISTA_DINAMICA *lista, int chave){
 	return FALSE;
 }
 
+void swap(NO *p, NO *q){
+	NO *aux;
+	aux = p->proximo;
+	p->proximo = q->proximo;
+	q->proximo = aux;
+}
+
+void ordenar_lista(LISTA_DINAMICA *lista){
+	NO *ini, *elem, *p, *q, *temp;
+	ini = lista->inicio;
+	p = ini->proximo;
+	
+	while (p != NULL){
+		elem = p;
+		q = elem;
+		while (q != NULL){
+			temp = q;
+			if (temp->item.chave > elem->item.chave){
+				swap(temp, elem);
+			}
+			q = q->proximo;
+		}
+		p = p->proximo;
+	}
+}
+
 LISTA_DINAMICA *uniao_sem_repeticao(LISTA_DINAMICA *L1, LISTA_DINAMICA *L2, LISTA_DINAMICA *L3){
 
 }
@@ -124,7 +150,7 @@ TIPO_ITEM *recuperar_item(LISTA_DINAMICA *lista, int chave){
 	}
 	
 	if (p != NULL){
-		return p;
+		return p->item;
 	}
 	
 	return NULL;
