@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "listaencad.h"
+
+int main(void){
+	lista *li;
+	li = create_list();
+	
+	//clock_t start, middle, end;
+	//start = clock();
+	
+	//int i;
+	//for (i = 0; i < 200000; i++){
+	//	int n;
+	//	n = rand() % 1000;
+	//	append(li, n);
+	//}
+	
+	//middle = clock();
+	
+	
+	append(li, 6);
+	print(li);
+	
+	append(li, 2);
+	print(li);
+	
+	append(li, 1);
+	print(li);
+	
+	append(li, 9);
+	print(li);
+	
+	append(li, 2);
+	print(li);
+	
+	append(li, 0);
+	print(li);
+	
+	seek_n_destroy(li, 2);
+	print(li);
+	
+	seek_n_destroy(li, 6);
+	print(li);
+	
+	seek_n_destroy(li, 5);
+	print(li);
+	//print(li);
+	
+	sort(li);
+	print(li);
+	//end = clock();
+	
+	//printf("TIME TO CREATE THE LIST: %lf\n", (middle - start)/1000000.0);
+	//printf("TIME TO BUBBLE SORT THE LIST: %lf\n", (end - middle)/1000000.0);
+	
+	destroy(li);
+	return 0;
+}

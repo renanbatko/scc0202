@@ -13,7 +13,7 @@ int main(void){
 	//imprimir_item(item);
 	
 	inserir_ordenado(li, item);
-	apagar_item(item);
+	//apagar_item(item);
 	int i, a, b;
 	for (i = 0; i < 2; i++){
 		//scanf(" %d %d", &a, &b);

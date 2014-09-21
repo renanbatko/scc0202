@@ -9,7 +9,7 @@
 
 
 typedef struct node{
-    TIPO_ITEM item;
+    TIPO_ITEM *item;
     struct node *proximo;
 }NO;
 
@@ -28,6 +28,8 @@ void apagar_no(NO *no);
 boolean inserir_ordenado(LISTA_DINAMICA *lista, TIPO_ITEM *item);
 
 boolean remover_item(LISTA_DINAMICA *lista, int chave);
+
+void ordenar_lista(LISTA_DINAMICA *lista);
 
 LISTA_DINAMICA *uniao_sem_repeticao(LISTA_DINAMICA *L1, LISTA_DINAMICA *L2, LISTA_DINAMICA *L3);
 

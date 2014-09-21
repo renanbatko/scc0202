@@ -19,36 +19,57 @@ void apagar_lista(LISTA_DINAMICA *lista){
 	
 	while (celula != NULL){
 		temp = celula;
-		apagar_no(temp);
 		celula = celula->proximo;
+		apagar_no(temp);
 	}
 	
 	free(lista);
 }
 
 void apagar_no(NO *no){
-	apagar_item(no->item);
+	apagar_item(&no->item);
 	free(no);
 }
 
 boolean inserir_ordenado(LISTA_DINAMICA *lista, TIPO_ITEM *item){
-	NO *novo;
+	NO *novo/*, *temp, *aux*/;
 	novo = (NO *) malloc(sizeof(NO));
 	
-	if (novo != NULL){
-		novo->item = item;
-		novo->proximo = NULL;
+	//TIPO_ITEM *it;
+	//it = criar_item(item->chave, item->info.valor);
+	 /*
+	novo->item = *item;
+	novo->proximo = NULL;
 	
+	temp = lista->inicio;
+	while (temp != NULL){
+		aux = temp;
+		temp = temp->proximo;
+	}
+	if (temp == NULL){
+		aux->proximo = novo;
+		printf("eh NULL\n");}
+	else
+		printf("nao eh null\n");
+	*/
+	
+	//novo->item
+	//novo->item = (TIPO_ITEM *) malloc(sizeof(TIPO_ITEM));
+	
+	if (novo != NULL){
+		novo->item = *item;
+		novo->proximo = NULL;
+		
 		if (lista->inicio == NULL){
 			lista->inicio = novo;
 		}
 		else {
 			lista->fim->proximo = novo;
 		}
-	
+		
 		lista->fim = novo;
 		lista->tamanho++;
-	
+		
 		return TRUE;
 	}
 	
@@ -112,11 +133,11 @@ void ordenar_lista(LISTA_DINAMICA *lista){
 }
 
 LISTA_DINAMICA *uniao_sem_repeticao(LISTA_DINAMICA *L1, LISTA_DINAMICA *L2, LISTA_DINAMICA *L3){
-
+	return NULL;
 }
 
 LISTA_DINAMICA *uniao_com_repeticao(LISTA_DINAMICA *L1, LISTA_DINAMICA *L2, LISTA_DINAMICA *L3){
-
+	return NULL;
 }
 
 int tamanho(LISTA_DINAMICA *lista){
@@ -124,7 +145,7 @@ int tamanho(LISTA_DINAMICA *lista){
 }
 
 boolean vazia(LISTA_DINAMICA *lista){
-	return (lista->tamanho == 0)
+	return (lista->tamanho == 0);
 }
 
 boolean cheia(LISTA_DINAMICA *lista){
@@ -136,7 +157,7 @@ void imprimir_lista(LISTA_DINAMICA *lista){
 	p = lista->inicio;
 	
 	while (p != NULL){
-		printf("[%d, %d]-> ", p->item.chave, p->item.info);
+		printf("[%d, %d]-> ", p->item.chave, p->item.info.valor);
 		p = p->proximo;
 	}
 }
@@ -156,7 +177,7 @@ TIPO_ITEM *recuperar_item(LISTA_DINAMICA *lista, int chave){
 	}
 	
 	if (p != NULL){
-		return p->item;
+		return &p->item;
 	}
 	
 	return NULL;

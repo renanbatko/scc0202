@@ -1,0 +1,18 @@
+#include "ponto.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void){
+	ponto *p, *q;
+	p = criar(2, 3);
+	printf("%f %f\n", ponto p->x, ponto p->y);
+	
+	inserir(p, 5, 6);
+	printf("%f %f\n", p->x, p->y);
+	
+	q = criar(9, 9);
+	printf("%f %f\n", q->x, q->y);
+	
+	printf("distancia: %f\n", calculo(p, q));
+	return 0;
+}
