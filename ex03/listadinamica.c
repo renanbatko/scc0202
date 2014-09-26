@@ -28,7 +28,7 @@ void apagar_lista(LISTA_DINAMICA *lista){
 
 void apagar_no(NO *no){
 	apagar_item(&no->item);
-	free(no);
+	//free(no); era aqui <<<<<<<--------------
 }
 
 boolean inserir_ordenado(LISTA_DINAMICA *lista, TIPO_ITEM *item){
@@ -106,14 +106,14 @@ boolean remover_item(LISTA_DINAMICA *lista, int chave){
 	return FALSE;
 }
 
-void swap(NO *p, NO *q){
+/*void swap(NO *p, NO *q){
 	NO *aux;
 	aux = p->proximo;
 	p->proximo = q->proximo;
 	q->proximo = aux;
 }
 
-void ordenar_lista(LISTA_DINAMICA *lista){
+LISTA_DINAMICA *ordenar_lista(LISTA_DINAMICA *lista){
 	NO *ini, *elem, *p, *q, *temp;
 	ini = lista->inicio;
 	p = ini->proximo;
@@ -130,7 +130,7 @@ void ordenar_lista(LISTA_DINAMICA *lista){
 		}
 		p = p->proximo;
 	}
-}
+}*/
 
 LISTA_DINAMICA *uniao_sem_repeticao(LISTA_DINAMICA *L1, LISTA_DINAMICA *L2, LISTA_DINAMICA *L3){
 	return NULL;

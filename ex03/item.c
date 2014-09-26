@@ -13,6 +13,7 @@ TIPO_ITEM *criar_item(TIPO_CHAVE chave, int valor){
 }
 
 void apagar_item(TIPO_ITEM *item){
+	//printf("item freed...\n");
 	free(item);
 }
 

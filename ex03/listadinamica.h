@@ -29,8 +29,6 @@ boolean inserir_ordenado(LISTA_DINAMICA *lista, TIPO_ITEM *item);
 
 boolean remover_item(LISTA_DINAMICA *lista, int chave);
 
-void ordenar_lista(LISTA_DINAMICA *lista);
-
 LISTA_DINAMICA *uniao_sem_repeticao(LISTA_DINAMICA *L1, LISTA_DINAMICA *L2, LISTA_DINAMICA *L3);
 
 LISTA_DINAMICA *uniao_com_repeticao(LISTA_DINAMICA *L1, LISTA_DINAMICA *L2, LISTA_DINAMICA *L3);
@@ -46,5 +44,7 @@ void imprimir_lista(LISTA_DINAMICA *lista);
 void imprimir_invertida(LISTA_DINAMICA *lista);
 
 TIPO_ITEM *recuperar_item(LISTA_DINAMICA *lista, int chave);
+
+LISTA_DINAMICA *ordenar_lista(LISTA_DINAMICA *lista);
   
 #endif

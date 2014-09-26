@@ -9,7 +9,7 @@
 
 
 typedef struct node{
-    TIPO_ITEM *item;
+    TIPO_ITEM item;
     struct node *proximo;
 }NO;
 
@@ -46,5 +46,7 @@ void imprimir_lista(LISTA_DINAMICA *lista);
 void imprimir_invertida(LISTA_DINAMICA *lista);
 
 TIPO_ITEM *recuperar_item(LISTA_DINAMICA *lista, int chave);
+
+LISTA_DINAMICA *ordenar_lista(LISTA_DINAMICA *lista);
   
 #endif

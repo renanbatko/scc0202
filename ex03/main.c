@@ -9,16 +9,16 @@ int main(void){
 	
 	TIPO_ITEM *item;
 		
-	item = criar_item(2, 3);
+	//item = criar_item(2, 3);
 	//imprimir_item(item);
 	
-	inserir_ordenado(li, item);
-	apagar_item(item);
+	//inserir_ordenado(li, item);
+	//apagar_item(item);
 	int i, a, b;
-	for (i = 0; i < 2; i++){
-		//scanf(" %d %d", &a, &b);
-		a = i + 2;
-		b = i + 9;
+	for (i = 0; i < 4; i++){
+		scanf(" %d %d", &a, &b);
+		//a = i + 2;
+		//b = i + 9;
 		item = criar_item(a, b);
 		inserir_ordenado(li, item);
 		apagar_item(item);
