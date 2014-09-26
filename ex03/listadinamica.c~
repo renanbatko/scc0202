@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-LISTA_DINAMICA *criar_lista(void){
+LISTA_DINAMICA *criar_lista(void){ //ok
 	LISTA_DINAMICA *ini;
 	ini = (LISTA_DINAMICA *) malloc(sizeof(LISTA_DINAMICA));
 	
@@ -13,7 +13,7 @@ LISTA_DINAMICA *criar_lista(void){
 	return ini;
 }
 
-void apagar_lista(LISTA_DINAMICA *lista){
+void apagar_lista(LISTA_DINAMICA *lista){ //ok
 	NO *celula, *temp;
 	celula = lista->inicio;
 	
@@ -26,12 +26,12 @@ void apagar_lista(LISTA_DINAMICA *lista){
 	free(lista);
 }
 
-void apagar_no(NO *no){
+void apagar_no(NO *no){ //ok
 	apagar_item(&no->item);
-	//free(no);
+	//free(no); era aqui <<<<<<<--------------
 }
 
-boolean inserir_ordenado(LISTA_DINAMICA *lista, TIPO_ITEM *item){
+boolean inserir_ordenado(LISTA_DINAMICA *lista, TIPO_ITEM *item){ //ok
 	NO *novo/*, *temp, *aux*/;
 	novo = (NO *) malloc(sizeof(NO));
 	
@@ -76,7 +76,7 @@ boolean inserir_ordenado(LISTA_DINAMICA *lista, TIPO_ITEM *item){
 	return FALSE;
 }
 
-boolean remover_item(LISTA_DINAMICA *lista, int chave){
+boolean remover_item(LISTA_DINAMICA *lista, int chave){ //ok
 	NO *celula, *aux;
 	celula = lista->inicio;
 	aux = NULL;
@@ -106,7 +106,7 @@ boolean remover_item(LISTA_DINAMICA *lista, int chave){
 	return FALSE;
 }
 
-/*void swap(NO *p, NO *q){
+void swap(NO *p, NO *q){
 	NO *aux;
 	aux = p->proximo;
 	p->proximo = q->proximo;
@@ -130,7 +130,7 @@ LISTA_DINAMICA *ordenar_lista(LISTA_DINAMICA *lista){
 		}
 		p = p->proximo;
 	}
-}*/
+}
 
 LISTA_DINAMICA *uniao_sem_repeticao(LISTA_DINAMICA *L1, LISTA_DINAMICA *L2, LISTA_DINAMICA *L3){
 	return NULL;

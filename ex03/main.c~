@@ -15,17 +15,32 @@ int main(void){
 	//inserir_ordenado(li, item);
 	//apagar_item(item);
 	int i, a, b;
-	for (i = 0; i < 2; i++){
-		scanf(" %d %d", &a, &b);
-		//a = i + 2;
-		//b = i + 9;
+	for (i = 0; i < 4; i++){
+		//scanf(" %d %d", &a, &b);
+		a = i + 2;
+		b = i + 9;
 		item = criar_item(a, b);
 		inserir_ordenado(li, item);
 		apagar_item(item);
 	}
 	
+	printf("\n");
+	item = recuperar_item(li, 4);
+	imprimir_item(item);
+	
+	printf("\n");
 	imprimir_lista(li);
 	
+	remover_item(li, 2);
+	printf("\n");
+	imprimir_lista(li);
+	
+	remover_item(li, 5);
+	printf("\n");
+	imprimir_lista(li);
+
+
+
 	apagar_lista(li);
 	
 	return 0;
