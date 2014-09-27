@@ -24,12 +24,19 @@ int main(void){
 		apagar_item(item);
 	}
 	
+	imprimir_lista(li);
+	li = ordenar_lista(li);
 	printf("\n");
+	imprimir_lista(li);
+	
+	/*printf("\n");
 	item = recuperar_item(li, 4);
 	imprimir_item(item);
 	
 	printf("\n");
 	imprimir_lista(li);
+	
+	printf("tamanho: %d\n", tamanho(li));
 	
 	remover_item(li, 2);
 	printf("\n");
@@ -38,8 +45,10 @@ int main(void){
 	remover_item(li, 5);
 	printf("\n");
 	imprimir_lista(li);
+	
+	printf("tamanho: %d\n", tamanho(li));
 
-
+	*/
 
 	apagar_lista(li);
 	

@@ -14,17 +14,48 @@ int main(void){
 	
 	//inserir_ordenado(li, item);
 	//apagar_item(item);
-	int i, a, b;
-	for (i = 0; i < 4; i++){
+	//int i, a, b;
+	//for (i = 0; i < 4; i++){
 		//scanf(" %d %d", &a, &b);
-		a = i + 2;
-		b = i + 9;
-		item = criar_item(a, b);
-		inserir_ordenado(li, item);
-		apagar_item(item);
-	}
+		//a = i + 2;
+		//b = i + 9;
+		//item = criar_item(a, b);
+		//inserir_ordenado(li, item);
+		//apagar_item(item);
+	//}
 	
+	item = criar_item(99, 2);
+	inserir_ordenado(li, item);
+	apagar_item(item);
+	item = criar_item(9, 50);
+	inserir_ordenado(li, item);
+	apagar_item(item);
+	item = criar_item(1, 0);
+	inserir_ordenado(li, item);
+	apagar_item(item);
+	item = criar_item(12, 4);
+	inserir_ordenado(li, item);
+	apagar_item(item);
+	item = criar_item(2, 69);
+	inserir_ordenado(li, item);
+	apagar_item(item);
+	item = criar_item(19, 3);
+	inserir_ordenado(li, item);
+	apagar_item(item);
+	item = criar_item(78, 901);
+	inserir_ordenado(li, item);
+	apagar_item(item);
+	item = criar_item(18, 12);
+	inserir_ordenado(li, item);
+	apagar_item(item);
+	
+	
+	imprimir_lista(li);
+	li = ordenar_lista(li);
 	printf("\n");
+	imprimir_lista(li);
+	
+	/*printf("\n");
 	item = recuperar_item(li, 4);
 	imprimir_item(item);
 	
@@ -43,7 +74,7 @@ int main(void){
 	
 	printf("tamanho: %d\n", tamanho(li));
 
-
+	*/
 
 	apagar_lista(li);
 	

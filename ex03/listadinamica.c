@@ -32,29 +32,8 @@ void apagar_no(NO *no){ //ok
 }
 
 boolean inserir_ordenado(LISTA_DINAMICA *lista, TIPO_ITEM *item){ //ok
-	NO *novo/*, *temp, *aux*/;
+	NO *novo;
 	novo = (NO *) malloc(sizeof(NO));
-	
-	//TIPO_ITEM *it;
-	//it = criar_item(item->chave, item->info.valor);
-	 /*
-	novo->item = *item;
-	novo->proximo = NULL;
-	
-	temp = lista->inicio;
-	while (temp != NULL){
-		aux = temp;
-		temp = temp->proximo;
-	}
-	if (temp == NULL){
-		aux->proximo = novo;
-		printf("eh NULL\n");}
-	else
-		printf("nao eh null\n");
-	*/
-	
-	//novo->item
-	//novo->item = (TIPO_ITEM *) malloc(sizeof(TIPO_ITEM));
 	
 	if (novo != NULL){
 		novo->item = *item;
@@ -106,25 +85,24 @@ boolean remover_item(LISTA_DINAMICA *lista, int chave){ //ok
 	return FALSE;
 }
 
-void swap(NO *p, NO *q){
-	NO *aux;
-	aux = p->proximo;
-	p->proximo = q->proximo;
-	q->proximo = aux;
+void swap(NO *p, NO *q){ //parte do ordenar_lista
+	TIPO_CHAVE aux;
+	aux = p->item.chave;
+	p->item.chave = q->item.chave;
+	q->item.chave = aux;
 }
 
-LISTA_DINAMICA *ordenar_lista(LISTA_DINAMICA *lista){
-	NO *ini, *elem, *p, *q, *temp;
-	ini = lista->inicio;
-	p = ini->proximo;
+LISTA_DINAMICA *ordenar_lista(LISTA_DINAMICA *lista){ //ok
+	NO *p, *q, *elem, *temp;
+	p = lista->inicio;
 	
-	while (p != NULL){
+	while (p != NULL) {
 		elem = p;
 		q = elem;
-		while (q != NULL){
+		while (q != NULL) {
 			temp = q;
-			if (temp->item.chave > elem->item.chave){
-				swap(temp, elem);
+			if (temp->item.chave < elem->item.chave) {
+				swap(elem, temp);
 			}
 			q = q->proximo;
 		}
