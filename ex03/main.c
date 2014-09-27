@@ -90,8 +90,8 @@ int main(void){
 	*/
 	l3 = criar_lista();
 	
-	//l3 = uniao_com_repeticao(li, l2, l3);
-	l3 = uniao_sem_repeticao(li, l2, l3);
+	l3 = uniao_com_repeticao(li, l2, l3);
+	//l3 = uniao_sem_repeticao(li, l2, l3);
 	printf("\n");
 	imprimir_lista(l3);
 

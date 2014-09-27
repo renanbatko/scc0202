@@ -45,16 +45,16 @@ int main(void){
 	
 	l2 = criar_lista();
 	
+	item = criar_item(-1, 0);
+	inserir_ordenado(l2, item);
+	apagar_item(item);
+	item = criar_item(-1, 0);
+	inserir_ordenado(l2, item);
+	apagar_item(item);
+	item = criar_item(-1, 0);
+	inserir_ordenado(l2, item);
+	apagar_item(item);
 	item = criar_item(19, 3);
-	inserir_ordenado(l2, item);
-	apagar_item(item);
-	item = criar_item(2, 69);
-	inserir_ordenado(l2, item);
-	apagar_item(item);
-	item = criar_item(-1, 0);
-	inserir_ordenado(l2, item);
-	apagar_item(item);
-	item = criar_item(-1, 0);
 	inserir_ordenado(l2, item);
 	apagar_item(item);
 	item = criar_item(-1, 0);

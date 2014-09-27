@@ -87,9 +87,15 @@ boolean remover_item(LISTA_DINAMICA *lista, int chave){ //ok
 
 void swap(NO *p, NO *q){ //parte do ordenar_lista
 	TIPO_CHAVE aux;
+	TIPO_INFO temp;
+	
 	aux = p->item.chave;
 	p->item.chave = q->item.chave;
 	q->item.chave = aux;
+	
+	temp = p->item.info;
+	p->item.info = q->item.info;
+	q->item.info = temp;
 }
 
 LISTA_DINAMICA *ordenar_lista(LISTA_DINAMICA *lista){ //ok
