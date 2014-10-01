@@ -32,10 +32,33 @@ void apagar_no(NO *no){ //ok
 }
 
 boolean inserir_ordenado(LISTA_DINAMICA *lista, TIPO_ITEM *item){ //ok
-	NO *novo;
+	NO *novo; //novo elemento
+	NO *p; //ponteiro para percorrer a lista
+	NO *q = NULL; //elemento anterior
 	novo = (NO *) malloc(sizeof(NO));
 	
-	if (novo != NULL){
+	p = lista->inicio;
+	if (novo != NULL) {
+		novo->item = *item;
+		novo->proximo = NULL;
+		
+		while (p != NULL && p->item.chave < item->chave) {
+			q = p;
+			p = p->proximo;
+		}
+		if (q == NULL) {
+			novo->proximo = lista->inicio;
+			lista->inicio = novo;
+			lista->tamanho++;
+			return TRUE;
+		}
+		else {
+			novo->proximo = q->proximo;
+			q->proximo = novo;
+			lista->tamanho++;
+			return TRUE;
+		}
+		/*
 		novo->item = *item;
 		novo->proximo = NULL;
 		
@@ -43,13 +66,19 @@ boolean inserir_ordenado(LISTA_DINAMICA *lista, TIPO_ITEM *item){ //ok
 			lista->inicio = novo;
 		}
 		else {
-			lista->fim->proximo = novo;
+			while (p != NULL && p->item.chave < item->chave) {
+				q = p;
+				p = p->proximo;
+			}
+			q->proximo = novo;
+			novo->proximo = p->proximo;
+			//lista->fim->proximo = novo;
 		}
 		
 		lista->fim = novo;
-		lista->tamanho++;
+		lista->tamanho++;*/
 		
-		return TRUE;
+		//return TRUE;
 	}
 	
 	return FALSE;
@@ -118,7 +147,7 @@ LISTA_DINAMICA *ordenar_lista(LISTA_DINAMICA *lista){ //ok
 	return lista;
 }
 
-LISTA_DINAMICA *uniao_sem_repeticao(LISTA_DINAMICA *L1, LISTA_DINAMICA *L2, LISTA_DINAMICA *L3){
+LISTA_DINAMICA *uniao_sem_repeticao(LISTA_DINAMICA *L1, LISTA_DINAMICA *L2, LISTA_DINAMICA *L3){ //ok
 	NO *p, *q;
 	p = L1->inicio;
 	q = L2->inicio;
@@ -151,7 +180,7 @@ LISTA_DINAMICA *uniao_sem_repeticao(LISTA_DINAMICA *L1, LISTA_DINAMICA *L2, LIST
 	return L3;
 }
 
-LISTA_DINAMICA *uniao_com_repeticao(LISTA_DINAMICA *L1, LISTA_DINAMICA *L2, LISTA_DINAMICA *L3){
+LISTA_DINAMICA *uniao_com_repeticao(LISTA_DINAMICA *L1, LISTA_DINAMICA *L2, LISTA_DINAMICA *L3){ //ok
 	NO *p, *q;
 	p = L1->inicio;
 	q = L2->inicio;
