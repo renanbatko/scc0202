@@ -63,6 +63,8 @@ int main(void){
 	*/
 	
 	imprimir_lista(li);
+	printf("\n");
+	imprimir_invertida(li);
 	//li = ordenar_lista(li);
 	//printf("\n");
 	//imprimir_lista(l2);

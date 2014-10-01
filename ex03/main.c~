@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 int main(void){
-	LISTA_DINAMICA *li, *l2, *l3;
+	LISTA_DINAMICA *li/*, *l2, *l3*/;
 	li = criar_lista();
 	
 	TIPO_ITEM *item;
@@ -43,7 +43,7 @@ int main(void){
 	inserir_ordenado(li, item);
 	apagar_item(item);
 	
-	l2 = criar_lista();
+	/*l2 = criar_lista();
 	
 	item = criar_item(-1, 0);
 	inserir_ordenado(l2, item);
@@ -60,12 +60,12 @@ int main(void){
 	item = criar_item(-1, 0);
 	inserir_ordenado(l2, item);
 	apagar_item(item);
-	
+	*/
 	
 	imprimir_lista(li);
 	//li = ordenar_lista(li);
-	printf("\n");
-	imprimir_lista(l2);
+	//printf("\n");
+	//imprimir_lista(l2);
 	//imprimir_lista(li);
 	
 	/*printf("\n");
@@ -88,16 +88,16 @@ int main(void){
 	printf("tamanho: %d\n", tamanho(li));
 
 	*/
-	l3 = criar_lista();
+	//l3 = criar_lista();
 	
-	l3 = uniao_com_repeticao(li, l2, l3);
+	//l3 = uniao_com_repeticao(li, l2, l3);
 	//l3 = uniao_sem_repeticao(li, l2, l3);
-	printf("\n");
-	imprimir_lista(l3);
+	//printf("\n");
+	//imprimir_lista(l3);
 
 	apagar_lista(li);
-	apagar_lista(l2);
-	apagar_lista(l3);
+	//apagar_lista(l2);
+	//apagar_lista(l3);
 	
 	printf("\n");
 	

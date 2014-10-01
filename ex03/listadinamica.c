@@ -230,7 +230,25 @@ void imprimir_lista(LISTA_DINAMICA *lista){ //ok
 }
 
 void imprimir_invertida(LISTA_DINAMICA *lista){
+	NO *p;
+	NO *q;
+	p = (NO *) malloc((lista->tamanho+1) * sizeof(NO));
+	q = lista->inicio;
 	
+	int k = 0;
+	while (q != NULL) {
+		p[k].item.chave = q->item.chave;
+		p[k].item.info.valor = q->item.info.valor;
+		
+		k++;
+		q = q->proximo;
+	}
+	
+	for (k = lista->tamanho-1; k >= 0; k--) {
+		printf("[%d, %d]-> ", p[k].item.chave, p[k].item.info.valor);
+	}
+	
+	free(p);
 }
 
 TIPO_ITEM *recuperar_item(LISTA_DINAMICA *lista, int chave){ //ok
