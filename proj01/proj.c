@@ -20,7 +20,7 @@ list *create() {
 	return new;
 }
 
-int sorted_insertion(list *li, cell *c) {
+int sorted_insertion(list *li, cell *c) { //ok
 	cell *new; //novo elemento
 	cell *p; //ponteiro para percorrer a lista
 	cell *q = NULL; //elemento anterior
@@ -71,7 +71,22 @@ void update_relevance(list *li, char *key_relevance, char *new_relevance) {
 }
 
 void print_structure(list *li) {
-
+	cell *p; //ponteiro para percorrer a lista
+	p = li->first;
+	
+	while (p != NULL) {
+		printf("%d\n", p->code);
+		printf("%s\n", p->name);
+		printf("%d\n", p->relevance);
+		printf("%s\n", p->url);
+		int i;
+		for (i = 0; i < p->n_kw; i++) {
+			printf("%s\n", p->keyword[i].word);
+		}
+		//printf("%d\n", p->n_kw);
+		p = p->next;
+	}
+	printf("\n");
 }
 
 void search_by_kw(list *li, char *kw) {
