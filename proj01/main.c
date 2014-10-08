@@ -26,8 +26,8 @@ int fill_structure(list *li) {
 			temp[counter] = '\0';
 			counter = 0;
 			
-			printf("temp: %s\n", temp);
-			printf("argc: %d\n", argc);
+			//printf("temp: %s\n", temp);
+			//printf("argc: %d\n", argc);
 			
 			if (argc == 0) {
 				p->code = atoi(temp);
@@ -53,6 +53,8 @@ int fill_structure(list *li) {
 			}
 			else {
 				argc = 0;
+				//insercao dos dados da linha lida
+				sorted_insertion(li, p);
 			}
 		}
 	}
