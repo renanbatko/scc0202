@@ -1,0 +1,5 @@
+0001,Lual Lanches,600,http://www.luallanches.com.br/,lanches,lual,Sao Carlos
+0002,Hot Tiger Lanches,750,http://hottigerlanches.com.br/,lanches,Hot Tiger
+0003,Jet Lanches,630,http://www.jetlanches.com.br/,lanches,jet
+0004,Bar do Toco,800,http://www.bardotoco.com.br/,bar,toco
+0005,usp,950,http://www.usp.br/,usp,universidade

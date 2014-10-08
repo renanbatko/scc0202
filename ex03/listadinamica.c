@@ -215,7 +215,7 @@ boolean vazia(LISTA_DINAMICA *lista){ //ok
 	return (lista->tamanho == 0);
 }
 
-boolean cheia(LISTA_DINAMICA *lista){ //ok
+boolean cheia(LISTA_DINAMICA *lista){ //??
 	return FALSE;
 }
 

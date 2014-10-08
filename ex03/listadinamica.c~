@@ -244,7 +244,7 @@ void imprimir_invertida(LISTA_DINAMICA *lista){
 		q = q->proximo;
 	}
 	
-	for (k = lista->tamanho; k >= 0; k--) {
+	for (k = lista->tamanho-1; k >= 0; k--) {
 		printf("[%d, %d]-> ", p[k].item.chave, p[k].item.info.valor);
 	}
 	
