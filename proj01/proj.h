@@ -2,8 +2,21 @@
 #define PROJ_H
 
 typedef struct palavraschave kw;
+struct palavraschave {
+	char word[50];
+};
+
 
 typedef struct celula cell;
+struct celula {
+	int code;
+	char name[50];
+	int relevance;
+	char url[100];
+	kw keyword[10];
+	int n_kw;
+	cell *next;
+};
 
 typedef struct lista list;
 

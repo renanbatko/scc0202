@@ -7,19 +7,19 @@ int main(void) {
 	list *li;
 	li = create();
 	
-	struct celula *c;
+	cell *c;
 	c = (cell *) malloc(sizeof(cell));
-	/*
+	
 	c->code = 0006;
 	strcpy(c->name, "mariao");
 	c->relevance = 500;
 	strcpy(c->url, "www.mariao.com.br");
 	c->n_kw = 1;
-	strcpy(c->keyword[c->n_kw], "bar"); 
+	strcpy(c->keyword[c->n_kw].word, "bar"); 
 	
 	int k = sorted_insertion(li, c);
 	
 	printf("k = %d\n", k);
-	*/
+	
 	return 0;
 }
