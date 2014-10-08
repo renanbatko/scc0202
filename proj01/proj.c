@@ -14,14 +14,14 @@ struct celula {
 	char url[100];
 	kw keyword[10];
 	int n_kw;
-	struct celula *next;
+	cell *next;
 };
 
 struct lista {
 	int size;
 	cell *first;
 	cell *last;
-}
+};
 
 list *create() {
 	list *new;
@@ -76,7 +76,7 @@ void insert_kw(list *li, char *new_kw) {
 	
 }
 
-void remove(list *li, char *key_code) {
+void remove_site(list *li, char *key_code) {
 
 }
 

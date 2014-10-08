@@ -13,7 +13,7 @@ int sorted_insertion(list *, cell *);
 
 void insert_kw(list *, char *);
 
-void remove(list *, char *);
+void remove_site(list *, char *);
 
 void update_relevance(list *, char *, char *);
 

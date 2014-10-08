@@ -7,7 +7,9 @@ int main(void) {
 	list *li;
 	li = create();
 	
-	cell *c;
+	struct celula *c;
+	c = (cell *) malloc(sizeof(cell));
+	/*
 	c->code = 0006;
 	strcpy(c->name, "mariao");
 	c->relevance = 500;
@@ -18,6 +20,6 @@ int main(void) {
 	int k = sorted_insertion(li, c);
 	
 	printf("k = %d\n", k);
-	
+	*/
 	return 0;
 }
