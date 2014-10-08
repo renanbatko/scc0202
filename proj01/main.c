@@ -27,6 +27,7 @@ int fill_structure(list *li) {
 			counter = 0;
 			
 			printf("temp: %s\n", temp);
+			printf("argc: %d\n", argc);
 			
 			if (argc == 0) {
 				p->code = atoi(temp);
@@ -47,7 +48,12 @@ int fill_structure(list *li) {
 				p->n_kw = i + 1;
 			}
 			
-			argc++;
+			if (ch != '\n') {
+				argc++;	
+			}
+			else {
+				argc = 0;
+			}
 		}
 	}
 	
