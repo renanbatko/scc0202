@@ -7,7 +7,9 @@ typedef struct celula cell;
 
 typedef struct lista list;
 
-void sorted_insertion(list *, cell);
+list *create();
+
+int sorted_insertion(list *, cell *);
 
 void insert_kw(list *, char *);
 
