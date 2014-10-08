@@ -15,6 +15,7 @@ int fill_structure(list *li) {
 	cell *p = (cell *) malloc(sizeof(cell));
 	int counter = 0;
 	int argc = 0;
+	int i = 0;
 	while ((ch = fgetc(fp)) != EOF) {
 		temp = (char *) realloc(temp, (counter + 1) * sizeof(char));
 		if (ch != ',' && ch != '\n') {
@@ -26,8 +27,8 @@ int fill_structure(list *li) {
 			temp[counter] = '\0';
 			counter = 0;
 			
-			//printf("temp: %s\n", temp);
-			//printf("argc: %d\n", argc);
+			printf("temp: %s\n", temp);
+			printf("argc: %d\n", argc);
 			
 			if (argc == 0) {
 				p->code = atoi(temp);
@@ -41,9 +42,10 @@ int fill_structure(list *li) {
 			if (argc == 3) {
 				strcpy(p->url, temp);
 			}
-			int i = 0;
 			if (argc >= 4) {
+				//printf("%s\n", temp);
 				strcpy(p->keyword[i].word, temp);
+				//printf("%d\n", p->n_kw);
 				i++;
 				p->n_kw = i + 1;
 			}
@@ -53,6 +55,7 @@ int fill_structure(list *li) {
 			}
 			else {
 				argc = 0;
+				i = 0;
 				//insercao dos dados da linha lida
 				sorted_insertion(li, p);
 			}
