@@ -13,20 +13,22 @@ int fill_structure(list *li) {
 	
 	char ch, *temp = NULL;
 	cell *p = (cell *) malloc(sizeof(cell));
+	int counter = 0;
+	int argc = 0;
 	while ((ch = fgetc(fp)) != EOF) {
-		int counter = 0;
-		int argc = 0;
-		if (ch != '\n') {
-			if (ch != ',') {
-				temp = (char *) realloc(temp, (counter + 1) * sizeof(char));
-				temp[counter] = ch;
-				//printf("%c", temp[counter]);
-				counter++;
-			}
+		temp = (char *) realloc(temp, (counter + 1) * sizeof(char));
+		if (ch != ',' && ch != '\n') {
+			//printf("aqui ok...\n");
+			temp[counter] = ch;
+			counter++;
+		}
+		else {
 			temp[counter] = '\0';
-			printf("%s\n\n", temp);
+			counter = 0;
+			
+			printf("temp: %s\n", temp);
+			
 			if (argc == 0) {
-				//printf("aqui ok...\n");
 				p->code = atoi(temp);
 			}
 			if (argc == 1) {
@@ -45,12 +47,8 @@ int fill_structure(list *li) {
 				p->n_kw = i + 1;
 			}
 			
-			free(temp);
-			temp = NULL;
-			counter = 0;
 			argc++;
 		}
-		sorted_insertion(li, p);
 	}
 	
 	return 1;
