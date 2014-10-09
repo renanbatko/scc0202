@@ -132,6 +132,22 @@ typedef struct tmp {
 	int relevance;
 } results;
 
+void sort_by_relevance(results *r, int size) {
+	int i, j;
+	results temp;
+	for (j = 1; j < size; j++) {
+		temp = r[j];
+		i = j - 1;
+		while (i >= 0 && r[i].relevance < temp.relevance) {
+			r[i+1].relevance = r[i].relevance;
+			strcpy(r[i+1].url, r[i].url);
+			i--;
+		}
+		r[i+1].relevance = temp.relevance;
+		strcpy(r[i+1].url, temp.url);
+	}
+}
+
 
 void search_by_kw(list *li, char *kw) {
 	results *r;
@@ -153,9 +169,14 @@ void search_by_kw(list *li, char *kw) {
 		p = p->next;
 	}
 	
+	//funcao que ordena os resultados por relevancia
+	sort_by_relevance(r, counter);
+	
 	for (i = 0; i < counter; i++) {
 		printf("%s %d\n", r[i].url, r[i].relevance);
 	}
+	
+	free(r);
 }
 
 
