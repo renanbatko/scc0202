@@ -102,6 +102,41 @@ void form_insert_kw(list *li) {
 	printf("\nSite inserido!\n");
 }
 
+void form_remove_site(list *li) {
+	int code;
+	
+	printf("\n-----Remover site-----\n");
+	printf("Codigo: "); scanf(" %d", &code);
+	
+	remove_site(li, code);
+	
+	printf("\nSite removido!\n");
+}
+
+void form_update_relevance(list *li) {
+	int code;
+	int new_relevance;
+	
+	printf("\n-----Atualizar relevancia-----\n");
+	printf("Codigo: "); scanf(" %d", &code);
+	printf("Nova relevancia: "); scanf(" %d", &new_relevance);
+	
+	update_relevance(li, code, new_relevance);
+	
+	printf("\nRelevancia atualizada!\n");
+}
+
+void form_search(list *li) {
+	char kw[50];
+	
+	printf("\n-----Pesquisa por palavra chave-----\n");
+	printf("Palavra chave: "); scanf(" %s", kw);
+	
+	search_by_kw(li, kw);
+	
+	printf("\nPesquisa finalizada!\n");
+}
+
 int main(void) {
 	list *li;
 	li = create();
@@ -163,10 +198,12 @@ int main(void) {
 			scanf(" %c", &unuseful);
 		}
 		if (op == 3) {
+			form_remove_site(li);
 			printf("Digite 'q'+ Enter para continuar...\n");
 			scanf(" %c", &unuseful);
 		}
 		if (op == 4) {
+			form_update_relevance(li);
 			printf("Digite 'q'+ Enter para continuar...\n");
 			scanf(" %c", &unuseful);
 		}
@@ -176,6 +213,7 @@ int main(void) {
 			scanf(" %c", &unuseful);
 		}
 		if (op == 6) {
+			form_search(li);
 			printf("Digite 'q'+ Enter para continuar...\n");
 			scanf(" %c", &unuseful);
 		}
