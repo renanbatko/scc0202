@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int fill_structure(list *li) {
+int fill_structure(list *li) { //ok
 	FILE *fp;
 	fp = fopen("googlebot.txt", "r+");
 	
@@ -27,8 +27,8 @@ int fill_structure(list *li) {
 			temp[counter] = '\0';
 			counter = 0;
 			
-			printf("temp: %s\n", temp);
-			printf("argc: %d\n", argc);
+			//printf("temp: %s\n", temp);
+			//printf("argc: %d\n", argc);
 			
 			if (argc == 0) {
 				p->code = atoi(temp);
@@ -62,6 +62,8 @@ int fill_structure(list *li) {
 		}
 	}
 	
+	fclose(fp);
+	free(temp);
 	return 1;
 }
 
@@ -86,5 +88,9 @@ int main(void) {
 	fill_structure(li);
 	print_structure(li);
 	
+	insert_kw(li, "batata", 3);
+	print_structure(li);
+	
 	return 0;
 }
+

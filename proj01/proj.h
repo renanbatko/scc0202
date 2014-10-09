@@ -24,7 +24,7 @@ list *create();
 
 int sorted_insertion(list *, cell *);
 
-void insert_kw(list *, char *);
+void insert_kw(list *, char *, int);
 
 void remove_site(list *, char *);
 

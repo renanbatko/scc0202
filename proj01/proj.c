@@ -9,7 +9,7 @@ struct lista {
 	cell *last;
 };
 
-list *create() {
+list *create() { //ok
 	list *new;
 	new = (list *) malloc(sizeof(list));
 	
@@ -58,8 +58,16 @@ int sorted_insertion(list *li, cell *c) { //ok
 	return 0;
 }
 
-void insert_kw(list *li, char *new_kw) {
+void insert_kw(list *li, char *new_kw, int keycode) { //ok
+	cell *p; //ponteiro para percorrer a list
+	p = li->first;
 	
+	while (p != NULL && p->code != keycode) {
+		p = p->next;
+	}
+	
+	strcpy(p->keyword[p->n_kw].word, new_kw);
+	p->n_kw++;
 }
 
 void remove_site(list *li, char *key_code) {
