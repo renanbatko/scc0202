@@ -88,7 +88,10 @@ int main(void) {
 	fill_structure(li);
 	print_structure(li);
 	
-	insert_kw(li, "batata", 3);
+	//insert_kw(li, "batata", 3);
+	//print_structure(li);
+	
+	remove_site(li, 1);
 	print_structure(li);
 	
 	return 0;

@@ -70,8 +70,31 @@ void insert_kw(list *li, char *new_kw, int keycode) { //ok
 	p->n_kw++;
 }
 
-void remove_site(list *li, char *key_code) {
-
+int remove_site(list *li, int keycode) { //ok
+	cell *p;
+	cell *q;
+	q = li->first;
+	p = q->next;
+	
+	if (li->first->code == keycode) {
+		cell *temp = li->first;
+		li->first = li->first->next;
+		free(temp);
+	}
+	
+	while (p != NULL && p->code != keycode) {
+		q = p;
+		p = p->next;
+	}
+	
+	if (p != NULL) {
+		q->next = p->next;
+		free(p);
+		
+		return 1;
+	}
+	
+	return 0;
 }
 
 void update_relevance(list *li, char *key_relevance, char *new_relevance) {

@@ -26,7 +26,7 @@ int sorted_insertion(list *, cell *);
 
 void insert_kw(list *, char *, int);
 
-void remove_site(list *, char *);
+int remove_site(list *, int);
 
 void update_relevance(list *, char *, char *);
 
