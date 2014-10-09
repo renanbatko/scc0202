@@ -67,6 +67,41 @@ int fill_structure(list *li) { //ok
 	return 1;
 }
 
+void form_insertion(list *li) {
+	cell *c;
+	c = (cell *) malloc(sizeof(cell));
+	
+	printf("\n-----Inserir novo site-----\n");
+	printf("Codigo: "); scanf(" %d", &c->code);
+	printf("Nome: "); scanf(" %s", c->name);
+	printf("Relevancia: "); scanf(" %d", &c->relevance);
+	printf("URL: "); scanf(" %s", c->url);
+	printf("Numero de palavras chave: "); scanf(" %d", &c->n_kw);
+	int i;
+	for (i = 0; i < c->n_kw; i++) {
+		printf("Palavra chave [%d]: ", i); scanf(" %s", c->keyword[i].word);
+	}
+	
+	sorted_insertion(li, c);
+	
+	printf("\nSite inserido!\n");
+	
+	free(c);
+}
+
+void form_insert_kw(list *li) {
+	int code;
+	char new_kw[50];
+	
+	printf("\n-----Inserir nova palavra chave-----\n");
+	printf("Codigo: "); scanf(" %d", &code);
+	printf("Nova palavra chave: "); scanf(" %s", new_kw);
+	
+	insert_kw(li, new_kw, code);
+	
+	printf("\nSite inserido!\n");
+}
+
 int main(void) {
 	list *li;
 	li = create();
@@ -86,7 +121,7 @@ int main(void) {
 	*/
 	
 	fill_structure(li);
-	print_structure(li);
+	//print_structure(li);
 	
 	//insert_kw(li, "batata", 3);
 	//print_structure(li);
@@ -97,7 +132,63 @@ int main(void) {
 	//update_relevance(li, 2, 12);
 	//print_structure(li);
 	
-	search_by_kw(li, "Sao Carlos");
+	//search_by_kw(li, "Sao Carlos");
+	
+	while (1) {
+		char unuseful;
+		system("clear");
+		printf("MINI GOOGLE\n\n");
+		printf("1 - Inserir novo site\n");
+		printf("2 - Inserir palavra chave\n");
+		printf("3 - Remover site\n");
+		printf("4 - Atualizar relevancia\n");
+		printf("5 - Mostrar estrutura de dados\n");
+		printf("6 - Buscar por palavra chave\n");
+		printf("7 - Sugerir sites\n");
+		printf("8 - Sair\n");
+		int op;
+		printf("Opcao: "); scanf(" %d", &op);
+		
+		if (op < 1 || op > 8) {
+			continue;
+		}
+		if (op == 1) {
+			form_insertion(li);
+			printf("Digite 'q'+ Enter para continuar...\n");
+			scanf(" %c", &unuseful);
+		}
+		if (op == 2) {
+			form_insert_kw(li);
+			printf("Digite 'q'+ Enter para continuar...\n");
+			scanf(" %c", &unuseful);
+		}
+		if (op == 3) {
+			printf("Digite 'q'+ Enter para continuar...\n");
+			scanf(" %c", &unuseful);
+		}
+		if (op == 4) {
+			printf("Digite 'q'+ Enter para continuar...\n");
+			scanf(" %c", &unuseful);
+		}
+		if (op == 5) {
+			print_structure(li);
+			printf("Digite 'q'+ Enter para continuar...\n");
+			scanf(" %c", &unuseful);
+		}
+		if (op == 6) {
+			printf("Digite 'q'+ Enter para continuar...\n");
+			scanf(" %c", &unuseful);
+		}
+		if (op == 7) {
+			printf("Digite 'q'+ Enter para continuar...\n");
+			scanf(" %c", &unuseful);
+		}
+		if (op == 8) {
+			break;
+		}
+	}
+	
+	destroy(li);
 	
 	return 0;
 }

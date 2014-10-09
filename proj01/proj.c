@@ -179,6 +179,31 @@ void search_by_kw(list *li, char *kw) {
 	free(r);
 }
 
+void destroy(list *li) {
+	cell *p;
+	cell *q;
+	
+	p = li->first;
+	while (p != NULL) {
+		q = p;
+		p = p->next;
+		free(q);
+	}
+	
+	free(li);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
