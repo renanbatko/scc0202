@@ -94,8 +94,10 @@ int main(void) {
 	//remove_site(li, 1);
 	//print_structure(li);
 	
-	update_relevance(li, 2, 12);
-	print_structure(li);
+	//update_relevance(li, 2, 12);
+	//print_structure(li);
+	
+	search_by_kw(li, "Sao Carlos");
 	
 	return 0;
 }

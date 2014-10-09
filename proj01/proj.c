@@ -127,8 +127,35 @@ void print_structure(list *li) { //ok
 	printf("\n");
 }
 
-void search_by_kw(list *li, char *kw) {
+typedef struct tmp {
+	char url[100];
+	int relevance;
+} results;
 
+
+void search_by_kw(list *li, char *kw) {
+	results *r;
+	r = NULL;
+	
+	cell *p; //ponteiro para pecorrer a lista
+	p = li->first;
+	
+	int i, counter = 0;
+	while (p != NULL) {
+		for (i = 0; i < p->n_kw; i++) {
+			if (!strcmp(p->keyword[i].word, kw)) {
+				r = (results *) realloc(r, (counter + 1) * sizeof(results));
+				strcpy(r[counter].url, p->url);
+				r[counter].relevance = p->relevance;
+				counter++;
+			}
+		}
+		p = p->next;
+	}
+	
+	for (i = 0; i < counter; i++) {
+		printf("%s %d\n", r[i].url, r[i].relevance);
+	}
 }
 
 
