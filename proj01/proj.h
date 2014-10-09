@@ -28,7 +28,7 @@ void insert_kw(list *, char *, int);
 
 int remove_site(list *, int);
 
-void update_relevance(list *, char *, char *);
+void update_relevance(list *, int, int);
 
 void print_structure(list *);
 

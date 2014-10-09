@@ -97,11 +97,18 @@ int remove_site(list *li, int keycode) { //ok
 	return 0;
 }
 
-void update_relevance(list *li, char *key_relevance, char *new_relevance) {
-
+void update_relevance(list *li, int keycode, int new_relevance) { //ok
+	cell *p; //ponteiro para pecorrer a lista
+	p = li->first;
+	
+	while (p != NULL && p->code != keycode) {
+		p = p->next;
+	}
+	
+	p->relevance = new_relevance;
 }
 
-void print_structure(list *li) {
+void print_structure(list *li) { //ok
 	cell *p; //ponteiro para percorrer a lista
 	p = li->first;
 	
