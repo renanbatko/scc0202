@@ -137,6 +137,17 @@ void form_search(list *li) {
 	printf("\nPesquisa finalizada!\n");
 }
 
+void form_suggest(list *li) {
+	char kw[50];
+	
+	printf("\n-----Sugestoes-----\n");
+	printf("Palavra chave: "); scanf(" %s", kw);
+	
+	suggest_site(li, kw);
+	
+	printf("\nPesquisa finalizada!\n");
+}
+
 int main(void) {
 	list *li;
 	li = create();
@@ -218,6 +229,7 @@ int main(void) {
 			scanf(" %c", &unuseful);
 		}
 		if (op == 7) {
+			form_suggest(li);
 			printf("Digite 'q'+ Enter para continuar...\n");
 			scanf(" %c", &unuseful);
 		}

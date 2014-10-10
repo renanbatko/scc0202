@@ -34,6 +34,8 @@ void print_structure(list *);
 
 void search_by_kw(list *, char *);
 
+void suggest_site(list *, char *);
+
 void destroy(list *);
 
 #endif

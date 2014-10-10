@@ -180,6 +180,38 @@ void search_by_kw(list *li, char *kw) {
 	free(r);
 }
 
+void suggest_site(list *li, char *kw) {
+	cell *p;
+	p = li->first;
+	struct palavraschave *kword;
+	kword = NULL;
+	
+	int i, counter  = 0;
+	while (p != NULL) {
+		for (i = 0; i < p->n_kw; i++) {
+			if (!strcmp(p->keyword[i].word, kw)) {
+				int j;
+				for (j = 0; j < p->n_kw; j++) {
+					if (strcmp(p->keyword[j].word, kw) != 0) {
+						kword = (struct palavraschave *) realloc(kword, (counter + 1) * sizeof(struct palavraschave));
+						strcpy(kword[counter].word, p->keyword[j].word);
+						counter++;
+					}
+				}
+			}
+		}
+		p = p->next;
+	}
+	
+	for (i = 0; i < counter; i++) {
+		search_by_kw(li, kword[i].word);
+	}
+	
+	free(kword);
+}
+
+
+
 void destroy(list *li) {
 	cell *p;
 	cell *q;
