@@ -113,18 +113,19 @@ void print_structure(list *li) { //ok
 	p = li->first;
 	
 	while (p != NULL) {
-		printf("%d\n", p->code);
-		printf("%s\n", p->name);
-		printf("%d\n", p->relevance);
-		printf("%s\n", p->url);
+		printf("\n----------------------------------\n");
+		printf("Codigo: %d\n", p->code);
+		printf("Nome: %s\n", p->name);
+		printf("Relevancia: %d\n", p->relevance);
+		printf("URL: %s\n", p->url);
 		int i;
 		for (i = 0; i < p->n_kw; i++) {
-			printf("%s\n", p->keyword[i].word);
+			printf("Palavra chave [%d]: %s\n", i, p->keyword[i].word);
 		}
 		//printf("%d\n", p->n_kw);
 		p = p->next;
+		printf("\n----------------------------------\n");
 	}
-	printf("\n");
 }
 
 typedef struct tmp {
