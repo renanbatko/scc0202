@@ -1,13 +1,14 @@
 #ifndef QUEUE_H
 #define QUEUE_H
+#define MAX 100
 
 typedef struct fila queue;
 
-queue *create(int);
+queue *create();
 
-void add(queue *, int);
+int add(queue *, int);
 
-void remove(queue *);
+int removeq(queue *);
 
 void destroy(queue *);
 
