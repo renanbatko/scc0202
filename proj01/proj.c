@@ -9,6 +9,11 @@ struct lista {
 	cell *last;
 };
 
+/****************************************/
+/* NOME: list *create()                 */
+/* DESCRICAO: funcao que cria uma lista */
+/* RETORNO: ponteiro para lista         */
+/****************************************/
 list *create() { //ok
 	list *new;
 	new = (list *) malloc(sizeof(list));
@@ -20,6 +25,14 @@ list *create() { //ok
 	return new;
 }
 
+/*************************************************************/
+/* NOME: int sorted_insertion(list *li, cell *c)             */
+/* DESCRICAO: insere um elemento na lista, de forma ordenada */
+/* PARAMETROS: list *li - ponteiro para a lista              */
+/*             cell *c - ponteiro para um novo elemento      */
+/* RETORNO: 1 - insercao feita com sucesso                   */
+/*          0 - falha na insercao                            */
+/*************************************************************/
 int sorted_insertion(list *li, cell *c) { //ok
 	cell *new; //novo elemento
 	cell *p; //ponteiro para percorrer a lista
@@ -58,6 +71,13 @@ int sorted_insertion(list *li, cell *c) { //ok
 	return 0;
 }
 
+/*********************************************************************/
+/* NOME: void insert_kw(list *li, char *new_kw, int keycode)         */
+/* DESCRICAO: adiciona uma palavra chave na celula de codigo keycode */
+/* PARAMETROS: list *li - ponteiro para a lista                      */
+/*             char *new_kw - nova palavra chave                     */
+/*             int keycode - codigo do site                          */
+/*********************************************************************/
 void insert_kw(list *li, char *new_kw, int keycode) { //ok
 	cell *p; //ponteiro para percorrer a list
 	p = li->first;
@@ -70,6 +90,14 @@ void insert_kw(list *li, char *new_kw, int keycode) { //ok
 	p->n_kw++;
 }
 
+/*************************************************************/
+/* NOME: int remove_site(list *li, int keycode)              */
+/* DESCRICAO: remove uma celula da lista                     */
+/* PARAMETROS: list *li - ponteiro para a lista              */
+/*             int keycode - codigo da celula a ser removida */
+/* RETORNO: 1 - remocao feita com sucesso                    */
+/*          0 - falha na remocao                             */
+/*************************************************************/
 int remove_site(list *li, int keycode) { //ok
 	cell *p;
 	cell *q;
@@ -97,6 +125,13 @@ int remove_site(list *li, int keycode) { //ok
 	return 0;
 }
 
+/*************************************************************************/
+/* NOME: void update_relevance(list *li, int keycode, int new_relevance) */
+/* DESCRICAO: atualiza a relevancia de um site                           */
+/* PARAMETROS: list *li - ponteiro para a lista                          */
+/*             int keycode - codigo do site                              */
+/*             int new_relevance - nova relevancia                       */
+/*************************************************************************/
 void update_relevance(list *li, int keycode, int new_relevance) { //ok
 	cell *p; //ponteiro para pecorrer a lista
 	p = li->first;
@@ -108,6 +143,11 @@ void update_relevance(list *li, int keycode, int new_relevance) { //ok
 	p->relevance = new_relevance;
 }
 
+/************************************************/
+/* NOME: void print_structure(list *li)         */
+/* DESCRICAO: imprime o conteudo da lista       */
+/* PARAMETROS: list *li - ponteiro para a lista */
+/************************************************/
 void print_structure(list *li) { //ok
 	cell *p; //ponteiro para percorrer a lista
 	p = li->first;
@@ -133,6 +173,13 @@ typedef struct tmp {
 	int relevance;
 } results;
 
+/***************************************************************/
+/* NOME: void sort_by_relevance(results *r, int size)          */
+/* DESCRICAO: ordena os resultados da pesquisa de              */ 
+/*            search_by_kw(list *li, char *kw) pela relevancia */
+/* PARAMETROS: list *li - ponteiro para a lista                */
+/*             int size - tamanho do vetor                     */
+/***************************************************************/
 void sort_by_relevance(results *r, int size) {
 	int i, j;
 	results temp;
@@ -149,7 +196,12 @@ void sort_by_relevance(results *r, int size) {
 	}
 }
 
-
+/***************************************************************/
+/* NOME: void search_by_kw(list *li, char *kw)                 */
+/* DESCRICAO: pesquisa na lista pela palavra chave informada   */ 
+/* PARAMETROS: list *li - ponteiro para a lista                */
+/*             char *kw - palavra chave                        */
+/***************************************************************/
 void search_by_kw(list *li, char *kw) {
 	results *r;
 	r = NULL;
@@ -180,6 +232,14 @@ void search_by_kw(list *li, char *kw) {
 	free(r);
 }
 
+/*************************************************************/
+/* NOME: void suggest_site(list *li, char *kw)               */
+/* DESCRICAO: pesquisa na lista pela palavra chave informada */
+/*            e pesquisa por outros sites pelas outras       */
+/*            palavras chave                                 */ 
+/* PARAMETROS: list *li - ponteiro para a lista              */
+/*             char *kw - palavra chave                      */
+/*************************************************************/
 void suggest_site(list *li, char *kw) {
 	cell *p;
 	p = li->first;
@@ -210,8 +270,11 @@ void suggest_site(list *li, char *kw) {
 	free(kword);
 }
 
-
-
+/**************************************************/
+/* NOME: void destroy(list *li)                   */
+/* DESCRICAO: libera a memoria alocada pela lista */
+/* PARAMETROS: list *li - ponteiro para a lista   */
+/**************************************************/
 void destroy(list *li) {
 	cell *p;
 	cell *q;
@@ -225,22 +288,4 @@ void destroy(list *li) {
 	
 	free(li);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

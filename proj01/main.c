@@ -3,6 +3,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**************************************************************/
+/* NOME: int fill_structure(list *li)                         */
+/* DESCRICAO: pega as informacoes do arquivo CVS e preenche a */
+/*            lista                                           */
+/* PARAMETROS: list *li - ponteiro para a lista               */
+/* RETORNO: 1 - funcao executada com sucesso                  */
+/*          -1 - falha na abertura do arquivo                 */
+/***************************************************************/
 int fill_structure(list *li) { //ok
 	FILE *fp;
 	fp = fopen("googlebot.txt", "r+");
