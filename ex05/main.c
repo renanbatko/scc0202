@@ -1,11 +1,38 @@
 #include "Item.h"
+#include "PilhaDinamica.h"
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
 	ITEM *item;
 	item = Item_Criar(1, 10);
-	Item_Imprimir(item);
+	//Item_Imprimir(item);
 	Item_Apagar(&item);
+	
+	PILHA_DINAMICA *pd;
+	pd = PilhaDinamica_CriarPilha();
+	
+	item = Item_Criar(1, 10);
+	PilhaDinamica_Empilhar(pd, item);
+	//Item_Apagar(&item);
+	item = Item_Criar(1, 5);
+	PilhaDinamica_Empilhar(pd, item);
+	//Item_Apagar(&item);
+	item = Item_Criar(1, 3);
+	PilhaDinamica_Empilhar(pd, item);
+	//Item_Apagar(&item);
+	item = Item_Criar(1, 2);
+	PilhaDinamica_Empilhar(pd, item);
+	//Item_Apagar(&item);
+	item = Item_Criar(1, 1);
+	PilhaDinamica_Empilhar(pd, item);
+	//Item_Apagar(&item);
+	item = Item_Criar(1, 9);
+	PilhaDinamica_Empilhar(pd, item);
+	//Item_Apagar(&item);
+	
+	PilhaDinamica_ImprimirPilha(pd);
+	
+	PilhaDinamica_ApagarPilha(&pd);
 	
 	return 0;
 }
