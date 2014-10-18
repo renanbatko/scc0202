@@ -64,9 +64,11 @@ ITEM *PilhaDinamica_Desempilhar(PILHA_DINAMICA *pPilha) {
 	
 	NO *morta;
 	morta = pPilha->pTopo;
-	//pPilha->pTopo->pAnterior = ;
-	pPilha->iTamanho--;
+	pPilha->pTopo = pPilha->pTopo->pAnterior;
+	morta->pAnterior = NULL;
 	free(morta);
+	morta = NULL;
+	pPilha->iTamanho--;
 	
 	return item;
 }

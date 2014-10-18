@@ -32,6 +32,15 @@ int main(int argc, char *argv[]) {
 	
 	PilhaDinamica_ImprimirPilha(pd);
 	
+	printf("\n\n");
+	
+	PilhaDinamica_Desempilhar(pd);
+	PilhaDinamica_Desempilhar(pd);
+	PilhaDinamica_Desempilhar(pd);
+	PilhaDinamica_Desempilhar(pd);
+	
+	PilhaDinamica_ImprimirPilha(pd);
+	
 	PilhaDinamica_ApagarPilha(&pd);
 	
 	return 0;
