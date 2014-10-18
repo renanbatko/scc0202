@@ -1,5 +1,6 @@
 #include "Item.h"
 #include "PilhaDinamica.h"
+#include "Calculadora.h"
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
@@ -20,10 +21,16 @@ int main(int argc, char *argv[]) {
 	item = Item_Criar(1, 3);
 	PilhaDinamica_Empilhar(pd, item);
 	//Item_Apagar(&item);
+	item = Item_Criar(0, '*');
+	PilhaDinamica_Empilhar(pd, item);
+	//Item_Apagar(&item);
 	item = Item_Criar(1, 2);
 	PilhaDinamica_Empilhar(pd, item);
 	//Item_Apagar(&item);
 	item = Item_Criar(1, 1);
+	PilhaDinamica_Empilhar(pd, item);
+	//Item_Apagar(&item);
+	item = Item_Criar(0, '+');
 	PilhaDinamica_Empilhar(pd, item);
 	//Item_Apagar(&item);
 	item = Item_Criar(1, 9);
@@ -42,6 +49,8 @@ int main(int argc, char *argv[]) {
 	PilhaDinamica_ImprimirPilha(pd);
 	
 	PilhaDinamica_ApagarPilha(&pd);
+
+	printf("calculadora_avalia: %d\n", Calculadora_AvaliaInfixa("1+2+3*4^5"));
 	
 	return 0;
 }
