@@ -79,3 +79,11 @@ void imprime(celula *ini){
 	}
 }
 
+int bigger(celula *p, int mai) {
+	if (p != NULL) {
+		if (p->dado > mai) mai = p->dado;
+		return bigger(p->prox, mai);
+	}
+	return mai;
+}
+

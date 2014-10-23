@@ -26,5 +26,6 @@ int main(void){
 	insere(listad, 6);
 	imprime(listad);
 
+	//printf("maior: %d\n", maior(listad, -1));
 	return 0;
 }

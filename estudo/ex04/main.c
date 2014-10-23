@@ -61,5 +61,7 @@ int main(void){
 	temp = seek(lista, 66);
 	printf("temp = %d\n", temp);
 	
+	printf("maior: %d\n", bigger(lista, -1));
+	
 	return 0;
 }

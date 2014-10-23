@@ -47,3 +47,11 @@ void imprime(celula *ini){
 	}
 	printf("\n");
 }
+
+int maior(celula *p, int mai) {
+	if (p != NULL) {
+		if (p->dado > mai) mai = p->dado;
+		return maior(p->next, mai);
+	}
+	return mai;
+}

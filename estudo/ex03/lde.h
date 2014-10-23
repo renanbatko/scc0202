@@ -11,4 +11,6 @@ void insere(celula *, int);
 
 void imprime(celula *);
 
+int maior(celula *, int);
+
 #endif

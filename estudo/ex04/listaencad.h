@@ -17,5 +17,6 @@ void imprime(celula *);
 
 int seek(celula *, int);
 
+int bigger(celula *, int);
 #endif
 
