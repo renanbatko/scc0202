@@ -61,7 +61,42 @@ void liberar(matriz *mat) {
 	free(mat);
 }
 
-void set(matriz *, int, int, int);
+int set(matriz *mat, int linha, int coluna, int dado) {
+	celula *p, *q, *qa;
+	
+	p = (celula *) malloc(sizeof(celula));
+	if (p == NULL || linha > mat->nlinhas || coluna > mat->ncolunas) return 0;
+	
+	p->linha = linha;
+	p->coluna = coluna;
+	p->dado = dado;
+	
+	q = mat->colunas[coluna];
+	qa = NULL;
+	while (q != NULL) {
+		if (q->linha < linha) {
+			qa = q;
+			q = q->abaixo;
+		}
+		else {
+			if (qa == NULL) 
+				mat->colunas[coluna] = p;
+			else
+				qa->abaixo = p;
+			p->abaixo = q;
+			break;
+		}
+	}
+	
+	if (q == NULL) {
+		if (qa == NULL)
+			mat->colunas[coluna] = p;
+		else
+			qa->abaixo = p;
+	}
+	
+	return 1;
+}
 
 int get(matriz *, int, int);
 

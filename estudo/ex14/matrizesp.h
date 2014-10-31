@@ -9,7 +9,7 @@ matriz *criar(int, int);
 
 void liberar(matriz *);
 
-void set(matriz *, int, int, int);
+int set(matriz *, int, int, int);
 
 int get(matriz *, int, int);
 
