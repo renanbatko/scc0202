@@ -29,21 +29,96 @@ NO *AB_CriarRaiz(ARVORE_BINARIA *pArvore, ITEM *pItem) {
 	return NULL;
 }
 
-void AB_ApagarArvore(ARVORE_BINARIA **pArvore);
+void AB_ApagarArvore_aux(NO *raiz) {
+	if (raiz != NULL) {
+		AB_ApagarArvore_aux(raiz->pFilhoEsq);
+		AB_ApagarArvore_aux(raiz->pFilhoDir);
+		Item_Apagar(&(raiz->pItem));
+		free(raiz);
+	}
+}
 
-NO *AB_InserirFilho(int iFilho, NO *pNo, ITEM *pItem);
+void AB_ApagarArvore(ARVORE_BINARIA **pArvore) {
+	AB_ApagarArvore_aux(*(pArvove)->pRaiz);
+	free(*pArvore);
+	*pArvore = NULL;
+}
 
-int AB_Vazia(ARVORE_BINARIA *pArvore);
+NO *AB_InserirFilho(int iFilho, NO *pNo, ITEM *pItem) {
+	NO *new;
+	new = (NO *) malloc(sizeof(NO));
+	
+	if (new != NULL) {
+		new->pFilhoEsq = NULL;
+		new->pFilhoDir = NULL;
+		new->pItem = pItem;
+		
+		if (iFilho == FILHO_ESQ) {
+			pNo->pFilhoEsq = new;
+		}
+		else {
+			pNo->pFilhoDir = new;
+		}
+	}
+	
+	return new;
+}
 
-void AB_ImprimirEmOrdem(ARVORE_BINARIA *pArvore);
+int AB_Vazia(ARVORE_BINARIA *pArvore) {
+	return (pArvore == NULL || pArvore->pRaiz == NULL);
+}
 
-void AB_ImprimirPreOrdem(ARVORE_BINARIA *pArvore);
+void AB_ImprimirEmOrdem_aux(NO *raiz) {
+	if (raiz != NULL) {
+		AB_ImprimirEmOrdem_aux(raiz->pFilhoEsq);
+		Item_Imprimir(raiz->pItem);
+		AB_ImprimirEmOrdem_aux(raiz->pFilhoDir);
+	}
+}
 
-void AB_ImprimirPosOrdem(ARVORE_BINARIA *pArvore);
+void AB_ImprimirEmOrdem(ARVORE_BINARIA *pArvore) {
+	AB_ImprimirEmOrdem_aux(pArvore->pRaiz);
+}
 
-int AB_AlturaArvore(ARVORE_BINARIA *pArvore);
+void AB_ImprimirPreOrdem_aux(NO *raiz) {
+	if (raiz != NULL) {
+		Item_Imprimir(raiz->pItem);
+		AB_ImprimirPreOrdem_aux(raiz->pFilhoEsq);
+		AB_ImprimirPreOrdem_aux(raiz->pFilhoDir);
+	}
+}
 
-int AB_AlturaNo(NO *pNo);
+void AB_ImprimirPreOrdem(ARVORE_BINARIA *pArvore) {
+	AB_ImprimirPreOrdem_aux(pArvore->pRaiz);
+}
+
+void AB_ImprimirPosOrdem_aux(NO *raiz) {
+	if (raiz != NULL) {
+		AB_ImprimirPosOrdem_aux(raiz->pFilhoEsq);
+		AB_ImprimirPosOrdem_aux(raiz->pFilhoDir);
+		Item_Imprimir(raiz->pItem);
+	}
+}
+
+void AB_ImprimirPosOrdem(ARVORE_BINARIA *pArvore) {
+	AB_ImprimirPosOrdem_aux(pArvore->pRaiz);
+}
+
+int AB_AlturaArvore_aux(NO *no) {
+	if (no == NULL) return -1;
+	int esq = AB_AlturaArvore_aux(no->pFilhoEsq);
+	int dir = AB_AlturaArvore_aux(no->pFilhoDir);
+	
+	return ((esq > dir) ? esq : dir) + 1;
+}
+
+int AB_AlturaArvore(ARVORE_BINARIA *pArvore) {
+	return AB_AlturaArvore_aux(pArvore->pRaiz);
+}
+
+int AB_AlturaNo(NO *pNo) {
+	return AB_AlturaArvore_aux(pNo);
+}
 
 int AB_ProfundidadeNo(NO *pRaiz, NO *pNo);
 
