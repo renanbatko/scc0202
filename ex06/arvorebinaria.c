@@ -39,7 +39,7 @@ void AB_ApagarArvore_aux(NO *raiz) {
 }
 
 void AB_ApagarArvore(ARVORE_BINARIA **pArvore) {
-	AB_ApagarArvore_aux(*(pArvove)->pRaiz);
+	AB_ApagarArvore_aux((*pArvore)->pRaiz);
 	free(*pArvore);
 	*pArvore = NULL;
 }
@@ -124,11 +124,37 @@ int AB_ProfundidadeNo(NO *pRaiz, NO *pNo);
 
 void AB_CaminhoNos(NO *pRaiz, NO *pNoInicial, NO *pNoFinal);
 
-int AB_ContarFolhas(NO *pRaiz);
+int AB_ContarFolhas(NO *pRaiz) {
+	if (pRaiz == NULL)
+		return 0;
+	if (pRaiz->pFilhoEsq == NULL && pRaiz->pFilhoDir == NULL)
+		return 1;
+	return AB_ContarFolhas(pRaiz->pFilhoEsq) + AB_ContarFolhas(pRaiz->pFilhoDir);
+}
 
-int AB_ContarNos(NO *pRaiz);
+int AB_ContarNos(NO *pRaiz) {
+	if (pRaiz != NULL)
+		return 0;
+	else
+		return 1 + AB_ContarNos(pRaiz->pFilhoEsq) + AB_ContarNos(pRaiz->pFilhoDir);
+}
 
-int AB_MaiorElementoArvore(NO *pRaiz);
+int AB_MaiorElementoArvore_aux(NO *pRaiz, int maior) {
+	if (pRaiz != NULL) {
+		if (pRaiz->pItem->iValor > maior) {
+			maior = pRaiz->pItem->iValor;
+		}
+		return (AB_MaiorElementoArvore_aux(pRaiz->pFilhoEsq, maior) > AB_MaiorElementoArvore_aux(pRaiz->pFilhoDir, maior) ? AB_MaiorElementoArvore_aux(pRaiz->pFilhoEsq, maior) : AB_MaiorElementoArvore_aux(pRaiz->pFilhoDir, maior));
+	}
+	else {
+		return 0;
+	}
+}
+
+int AB_MaiorElementoArvore(NO *pRaiz) {
+	if (pRaiz == NULL) return 0;
+	return AB_MaiorElementoArvore_aux(pRaiz, 0);
+}
 
 int AB_MenorElementoArvore(NO *pRaiz);
 
