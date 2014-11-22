@@ -17,4 +17,6 @@ ITEM *item_criar(char *, LOCAL *);
 
 void imprimir_item(ITEM *);
 
+void libera_item(ITEM *);
+
 #endif

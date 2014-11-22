@@ -21,24 +21,16 @@ struct arvore_binaria {
 	NO *raiz;
 };
 
-ARVORE_BINARIA *AB_CriarArvore();
+ARVORE_BINARIA *criar_arvore();
 
-NO *criar_raiz(ARVORE_BINARIA *pArvore, ITEM *pItem);
+NO *criar_raiz(ARVORE_BINARIA *, ITEM *);
 
-int inserir(ARVORE_BINARIA *arvore, ITEM item);
+NO *inserir_filho(int, NO *, ITEM *);
 
-int inserir_aux(NO *raiz, ITEM item);
+int inserir(ARVORE_BINARIA *, ITEM *);
 
-NO *inserir_filho(int filho, NO *no, ITEM item);
+ITEM *busca(ARVORE_BINARIA *, int);
 
-ITEM *busca_aux(NO *raiz, int chave);
-
-ITEM *busca(ARVORE_BINARIA *arvore, int chave);
-
-int vazia(ARVORE_BINARIA *ab);
-
-void emordem(ARVORE_BINARIA *arvore);
-
-void emordem_aux(NO *raiz);
+int vazia(ARVORE_BINARIA *);
 
 #endif
