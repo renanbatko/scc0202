@@ -133,30 +133,26 @@ int AB_ContarFolhas(NO *pRaiz) {
 }
 
 int AB_ContarNos(NO *pRaiz) {
-	if (pRaiz != NULL)
+	if (pRaiz == NULL)
 		return 0;
 	else
 		return 1 + AB_ContarNos(pRaiz->pFilhoEsq) + AB_ContarNos(pRaiz->pFilhoDir);
 }
 
-int AB_MaiorElementoArvore_aux(NO *pRaiz, int maior) {
-	if (pRaiz != NULL) {
-		if (pRaiz->pItem->iValor > maior) {
-			maior = pRaiz->pItem->iValor;
-		}
-		return (AB_MaiorElementoArvore_aux(pRaiz->pFilhoEsq, maior) > AB_MaiorElementoArvore_aux(pRaiz->pFilhoDir, maior) ? AB_MaiorElementoArvore_aux(pRaiz->pFilhoEsq, maior) : AB_MaiorElementoArvore_aux(pRaiz->pFilhoDir, maior));
-	}
-	else {
-		return 0;
-	}
-}
-
-int AB_MaiorElementoArvore(NO *pRaiz) {
-	if (pRaiz == NULL) return 0;
-	return AB_MaiorElementoArvore_aux(pRaiz, 0);
-}
+int AB_MaiorElementoArvore(NO *pRaiz);
 
 int AB_MenorElementoArvore(NO *pRaiz);
 
-int AB_SomaElementosArvore(NO *pRaiz);
+int AB_SomaElementosArvore_aux(NO *pRaiz) {
+	if (pRaiz != NULL)
+		return pRaiz->pItem->iValor + AB_SomaElementosArvore_aux(pRaiz->pFilhoEsq) + AB_SomaElementosArvore_aux(pRaiz->pFilhoDir);
+	return 0;
+}
+
+int AB_SomaElementosArvore(NO *pRaiz) {
+	if (pRaiz != NULL) {
+		return AB_SomaElementosArvore_aux(pRaiz);
+	}
+	return 0;
+}
 
