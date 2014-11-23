@@ -13,10 +13,14 @@ typedef struct i{
 	LOCAL *local;
 } ITEM;
 
+LOCAL *criar_local(int, int);
+
 ITEM *item_criar(char *, LOCAL *);
 
 void imprimir_item(ITEM *);
 
 void libera_item(ITEM *);
+
+void libera_local(LOCAL *);
 
 #endif

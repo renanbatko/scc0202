@@ -38,13 +38,28 @@ char to_lower(char ch) {
 	return ch;
 }
 
+LOCAL *criar_local(int linha, int pagina) {
+	LOCAL *novo;
+	novo = (LOCAL *) malloc(sizeof(LOCAL));
+	
+	if (novo != NULL) {
+		novo->linha = linha;
+		novo->pagina = pagina;
+	}
+	
+	return novo;
+}
+
 ITEM *item_criar(char *palavra, LOCAL *local) {
 	ITEM *novo;
 	novo = (ITEM *) malloc(sizeof(ITEM));
 	
+	LOCAL *new;
+	new = criar_local(local->linha, local->pagina);
+	
 	if (novo != NULL) {
 		strcpy(novo->palavra, palavra);
-		novo->local = local;
+		novo->local = new;
 		novo->chave = to_lower(palavra[0]);
 		novo->local->prox = NULL;
 		
@@ -64,13 +79,17 @@ void imprimir_item(ITEM *item) {
 	printf("\n");
 }
 
+void libera_local(LOCAL *local) {
+	free(local);
+}
+
 void libera_item(ITEM *item) {
 	LOCAL *p, *q;
 	p = item->local;
 	while (p != NULL) {
 		q = p;
 		p = p->prox;
-		free(q);
+		libera_local(q);
 	}
 	free(item);
 }
