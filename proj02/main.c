@@ -22,10 +22,6 @@ char *readline() {
 
 void inserir_pc(ARVORE_BINARIA *ab, char *pc) {
 
-	LOCAL *local = (LOCAL *) malloc(sizeof(LOCAL));
-	local->pagina = -1;
-	local->linha = -1;
-	local->prox = NULL;
 	
 	//ponteiro para o arquivo do texto
 	FILE *texto;
@@ -36,17 +32,22 @@ void inserir_pc(ARVORE_BINARIA *ab, char *pc) {
 	int linha = 0;
 	int pagina = 0;
 	while ((ch = fgetc(texto)) != EOF) {
+		LOCAL *local = (LOCAL *) malloc(sizeof(LOCAL));
+		local->pagina = -1;
+		local->linha = -1;
+		local->prox = NULL;
+		
 		if (ch == ' ' || ch == ',' || ch == '.' || ch == '\r' || ch == '\t' || ch == ':' || ch == ';' || ch == '?' || ch == '!' || ch == '\n') {
 			if (ch == '\n') linha++;
 			if (linha > 40) pagina++;
 			
 			palavra_texto = (char *) realloc(palavra_texto, (counter + 1) * sizeof(char));
 			palavra_texto[counter] = '\0';
-			printf("%s == %s ?\n", pc, palavra_texto);
+			//printf("%s == %s ?\n", pc, palavra_texto);
 			if (!strcmp(pc, palavra_texto)) {
 				//printf("%s == %s\n", pc, palavra_texto);
 				//printf("tem alguma coisa igual aqui...\n");
-				//printf("l %d p %d\n", linha, pagina);
+				printf("%s %d,%d\n", palavra_texto, pagina, linha);
 				local->linha = linha;
 				local->pagina = pagina;
 				local->prox = NULL;
@@ -61,17 +62,19 @@ void inserir_pc(ARVORE_BINARIA *ab, char *pc) {
 						p = p->prox;
 					}
 					q->prox = local;
-					
+					printf("%s %d,%d\n", palavra_texto, local->pagina, local->linha);
 				}
 				else {
 					ITEM *item = item_criar(pc, local);//busca
 					inserir(ab, item);
 				}
-				
 			}
 			counter = 0;
 			free(palavra_texto);
 			palavra_texto = NULL;
+			//free(local);
+			local = NULL;
+			/////////////////////////////////////////////////////////
 		}
 		else {
 			palavra_texto = (char *) realloc(palavra_texto, (counter + 1) * sizeof(char));
@@ -81,7 +84,7 @@ void inserir_pc(ARVORE_BINARIA *ab, char *pc) {
 	}
 
 	rewind(texto);
-	free(local);
+	//free(local);
 	fclose(texto);
 }
 
@@ -98,7 +101,7 @@ void leitura_arq_palavras(ARVORE_BINARIA *ab) {
 			counter++;
 		}
 		palavra[counter] = '\0';
-		printf("PALAVRA: %s\n", palavra);
+		//printf("PALAVRA: %s\n", palavra);
 		inserir_pc(ab, palavra);
 		free(palavra);
 		palavra = NULL;

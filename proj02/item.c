@@ -73,7 +73,7 @@ void imprimir_item(ITEM *item) {
 	printf("%s\t", item->palavra);
 	LOCAL *p = item->local;
 	while (p != NULL) {
-		printf("%d,%d ", item->local->pagina, item->local->linha);
+		printf("%d,%d ", p->pagina, p->linha);
 		p = p->prox;
 	}
 	printf("\n");
