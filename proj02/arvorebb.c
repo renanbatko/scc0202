@@ -35,7 +35,7 @@ NO *inserir_filho(int filho, NO *no, ITEM *item) {
 		pnovo->item = item;
 	}
 	
-	if (filho == FILHOESQ) {
+	if (filho == FILHO_ESQ) {
 		no->filhoesq = pnovo;
 	}
 	else {
@@ -46,7 +46,25 @@ NO *inserir_filho(int filho, NO *no, ITEM *item) {
 }
 
 int inserir_aux(NO *raiz, ITEM *item) {
-	
+	if (raiz->item->chave > item->chave) {
+		if (raiz->filhoesq != NULL) {
+			return inserir_aux(raiz->filhoesq, item);
+		}
+		else {
+			return (inserir_filho(FILHO_ESQ, raiz, item) != NULL);
+		}
+	}
+	else if (raiz->item->chave < item->chave){
+		if (raiz->filhodir != NULL) {
+			return inserir_aux(raiz->filhodir, item);
+		}
+		else {
+			return (inserir_filho(FILHO_DIR, raiz, item) != NULL);
+		}
+	}
+	else {
+		return 0;
+	}
 }
 
 int inserir(ARVORE_BINARIA *arvore, ITEM *item) {

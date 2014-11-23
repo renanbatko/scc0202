@@ -28,12 +28,12 @@ void inserir_pc(ARVORE_BINARIA *ab, char *pc) {
 	
 	
 	ITEM *item = item_criar(pc, local);
-	inserir(ab, *item);
+	inserir(ab, item);
 	
 	free(local);
 }
 
-void leitura (ARVORE_BINARIA *ab) {
+void leitura_arq_palavras(ARVORE_BINARIA *ab) {
 	char *palavra = NULL;
 	char ch;
 	FILE *pf = fopen ("palavras.txt", "r");
@@ -60,44 +60,35 @@ void leitura (ARVORE_BINARIA *ab) {
 }
 
 int main(int argc, char *argv[]) {
-	int Op;
-	char *pc;
+	int op;
+	//char *palavra_chave;
 	
-	ARVORE_BINARIA *ab = AB_CriarArvore();
+	ARVORE_BINARIA *ab = criar_arvore();
 	
-	leitura(ab);
+	leitura_arq_palavras(ab);
 	
 	do {
 		system("clear");
-		printf("\n Entre com a opcao desejada :\n\n");
-		printf(" 1 - Inserir palavra-chave\n");
-		printf(" 2 - Mostrar indice remissivo\n");
-		printf(" 3 - Buscar por palavra\n");
-		printf(" 4 - Sair\n\n");
-		scanf(" %d", &Op);
+		printf("Entre com a opcao desejada:\n----------------------------------\n");
+		printf("1 - Inserir palavra-chave\n");
+		printf("2 - Mostrar indice remissivo\n");
+		printf("3 - Buscar por palavra\n");
+		printf("4 - Sair\n");
+		printf("Opcao: "); scanf(" %d", &op);
 		
-		switch(Op) {
+		switch (op) {
 			case 1:
-				/* Inserir palavra-chave */
-				//scanf(" %s", pc);
-				//pc = readline();
-				//printf("PALAVRA:%s\n", pc);
-				//int inuti;
-				//scanf(" %d", &inuti);
-				//inserir_pc(ab, pc);
+			
 			break;
 			case 2:
-				/* Mostrar indice remissivo */
-				emordem(ab);
-				int inutil;
-				scanf(" %d", &inutil);
+			
 			break;
 			case 3:
-				/* Buscar por palavra */
+			
 			break;
-			case 4: break;
-		}
-	} while (Op != 4);
+		}	
+	} while (op > 0 && op < 4);
+		
 	
 	return 0;
 }
