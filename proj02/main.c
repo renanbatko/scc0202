@@ -47,7 +47,7 @@ void inserir_pc(ARVORE_BINARIA *ab, char *pc) {
 			if (!strcmp(pc, palavra_texto)) {
 				//printf("%s == %s\n", pc, palavra_texto);
 				//printf("tem alguma coisa igual aqui...\n");
-				printf("%s %d,%d\n", palavra_texto, pagina, linha);
+				//printf("%s %d,%d\n", palavra_texto, pagina, linha);
 				local->linha = linha;
 				local->pagina = pagina;
 				local->prox = NULL;
@@ -62,7 +62,7 @@ void inserir_pc(ARVORE_BINARIA *ab, char *pc) {
 						p = p->prox;
 					}
 					q->prox = local;
-					printf("%s %d,%d\n", palavra_texto, local->pagina, local->linha);
+					//printf("%s %d,%d\n", palavra_texto, local->pagina, local->linha);
 				}
 				else {
 					ITEM *item = item_criar(pc, local);//busca
@@ -108,9 +108,6 @@ void leitura_arq_palavras(ARVORE_BINARIA *ab) {
 		counter = 0;
 	} while (ch != '\n');
 	
-	int inutil;
-	scanf(" %d", &inutil);
-	
 	fclose(pf);
 }
 
@@ -121,9 +118,7 @@ int main(int argc, char *argv[]) {
 	ARVORE_BINARIA *ab = criar_arvore();
 	
 	leitura_arq_palavras(ab);
-	em_ordem(ab);
-	int inutil;
-	scanf(" %d", &inutil);
+	char continua;
 	
 	do {
 		system("clear");
@@ -137,9 +132,14 @@ int main(int argc, char *argv[]) {
 		switch (op) {
 			case 1:
 				printf("Nova palavra: "); scanf(" %s", palavra_chave);
+				inserir_pc(ab, palavra_chave);
+				printf("\nDigite q + ENTER para continuar: ");
+				scanf(" %c", &continua);
 			break;
 			case 2:
-			
+				em_ordem(ab);
+				printf("\nDigite q + ENTER para continuar: ");
+				scanf(" %c", &continua);
 			break;
 			case 3:
 			
