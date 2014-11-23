@@ -33,4 +33,6 @@ ITEM *busca(ARVORE_BINARIA *, int);
 
 int vazia(ARVORE_BINARIA *);
 
+void em_ordem(ARVORE_BINARIA *);
+
 #endif

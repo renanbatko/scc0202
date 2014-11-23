@@ -82,3 +82,16 @@ int vazia(ARVORE_BINARIA *arvore) {
 	return (arvore->raiz == NULL);
 }
 
+void em_ordem_aux(NO *raiz) {
+	if (raiz != NULL) {
+		em_ordem_aux(raiz->filhoesq);
+		imprimir_item(raiz->item);
+		em_ordem_aux(raiz->filhodir);
+	}
+}
+
+void em_ordem(ARVORE_BINARIA *arvore) {
+	em_ordem_aux(arvore->raiz);
+}
+
+

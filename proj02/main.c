@@ -45,7 +45,13 @@ void inserir_pc(ARVORE_BINARIA *ab, char *pc) {
 			printf("%s == %s ?\n", pc, palavra_texto);
 			if (!strcmp(pc, palavra_texto)) {
 				//printf("%s == %s\n", pc, palavra_texto);
-				printf("tem alguma coisa igual aqui...\n");
+				//printf("tem alguma coisa igual aqui...\n");
+				//printf("l %d p %d\n", linha, pagina);
+				local->linha = linha;
+				local->pagina = pagina;
+				
+				ITEM *item = item_criar(pc, local);
+				inserir(ab, item);
 			}
 			counter = 0;
 			free(palavra_texto);
@@ -57,10 +63,6 @@ void inserir_pc(ARVORE_BINARIA *ab, char *pc) {
 			counter++;
 		}
 	}
-	
-	
-	ITEM *item = item_criar(pc, local);
-	inserir(ab, item);
 
 	rewind(texto);
 	free(local);
@@ -100,6 +102,9 @@ int main(int argc, char *argv[]) {
 	ARVORE_BINARIA *ab = criar_arvore();
 	
 	leitura_arq_palavras(ab);
+	em_ordem(ab);
+	int inutil;
+	scanf(" %d", &inutil);
 	
 	do {
 		system("clear");

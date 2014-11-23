@@ -55,7 +55,13 @@ ITEM *item_criar(char *palavra, LOCAL *local) {
 }
 
 void imprimir_item(ITEM *item) {
-	printf("%s\t%d,%d\n", item->palavra, item->local->pagina, item->local->linha);
+	printf("%s\t", item->palavra);
+	LOCAL *p = item->local;
+	while (p != NULL) {
+		printf("%d,%d ", item->local->pagina, item->local->linha);
+		p = p->prox;
+	}
+	printf("\n");
 }
 
 void libera_item(ITEM *item) {
