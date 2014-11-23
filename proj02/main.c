@@ -49,9 +49,25 @@ void inserir_pc(ARVORE_BINARIA *ab, char *pc) {
 				//printf("l %d p %d\n", linha, pagina);
 				local->linha = linha;
 				local->pagina = pagina;
+				local->prox = NULL;
 				
-				ITEM *item = item_criar(pc, local);
-				inserir(ab, item);
+				ITEM *it = busca(ab, palavra_texto[0]);
+				//printf("ITEM->palavra = %s\n", it->palavra);
+				if (it != NULL) {
+					LOCAL *p, *q;
+					p = it->local;
+					while (p != NULL) {
+						q = p;
+						p = p->prox;
+					}
+					q->prox = local;
+					
+				}
+				else {
+					ITEM *item = item_criar(pc, local);//busca
+					inserir(ab, item);
+				}
+				
 			}
 			counter = 0;
 			free(palavra_texto);

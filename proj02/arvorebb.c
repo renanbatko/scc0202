@@ -76,7 +76,27 @@ int inserir(ARVORE_BINARIA *arvore, ITEM *item) {
 	}
 }
 
-ITEM *busca(ARVORE_BINARIA *, int);
+ITEM *busca_aux(NO *raiz, int chave) {
+	if (raiz == NULL) {
+		return NULL;
+	}
+	else {
+		if (raiz->item->chave > chave) {
+			return busca_aux(raiz->filhoesq, chave);
+		}
+		else if (raiz->item->chave < chave) {
+			return busca_aux(raiz->filhodir, chave);
+		}
+		else {
+			return raiz->item;
+		}
+	}
+}
+
+//fazer a busca para adicionar locais em vez de outro item
+ITEM *busca(ARVORE_BINARIA *arvore, int chave) {
+	return busca_aux(arvore->raiz, chave);
+}
 
 int vazia(ARVORE_BINARIA *arvore) {
 	return (arvore->raiz == NULL);
