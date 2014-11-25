@@ -130,20 +130,21 @@ void leitura (ARVORE_BINARIA *ab, char *pc) {
 		if (!strcmp(palavra, pc)) {
 			flag++;
 			item = busca(ab, pc[0]);
-			imprimir_item(item);
+			if (item != NULL)
+				imprimir_item(item);
+			else
+				break;
 		}
-		libera_item(item);
 		
 		free(palavra);
 		palavra = NULL;
 		counter = 0;
 	} while (ch != '\n');
 
-	if (!flag) {
-		printf("NAO EXISTE!!!\n");
+	if (flag == 0) {
+		printf("Nao existe no indice remissivo!\n");
 	}
-	int inutil;
-	scanf(" %d", &inutil);
+	
 	fclose(pf);
 }
 
@@ -182,6 +183,8 @@ int main(int argc, char *argv[]) {
 			case 3:
 				printf("Palavra: "); scanf(" %s", palavra_chave);
 				leitura(ab, palavra_chave);
+				printf("\nDigite q + ENTER para continuar: ");
+				scanf(" %c", &continua);
 			break;
 		}
 	} while (op >= 0 && op < 4);
