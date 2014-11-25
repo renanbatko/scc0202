@@ -111,6 +111,44 @@ void leitura_arq_palavras(ARVORE_BINARIA *ab) {
 	fclose(pf);
 }
 
+void leitura (ARVORE_BINARIA *ab, char *pc) {
+	char *palavra = NULL;
+	char ch;
+	FILE *pf = fopen ("palavras.txt", "r");
+	int counter = 0;
+	int flag = 0;
+	do {
+		while ((ch = fgetc(pf)) != ',' && ch != '\n') {
+			palavra = (char *) realloc(palavra, (counter + 1) * sizeof(char));
+			palavra[counter] = ch;
+			counter++;
+		}
+		palavra[counter] = '\0';
+		//printf("PALAVRA: %s\n", palavra);
+		
+		ITEM *item;
+		if (!strcmp(palavra, pc)) {
+			flag++;
+			item = busca(ab, pc[0]);
+			imprimir_item(item);
+		}
+		libera_item(item);
+		
+		free(palavra);
+		palavra = NULL;
+		counter = 0;
+	} while (ch != '\n');
+
+	if (!flag) {
+		printf("NAO EXISTE!!!\n");
+	}
+	int inutil;
+	scanf(" %d", &inutil);
+	fclose(pf);
+}
+
+
+
 int main(int argc, char *argv[]) {
 	int op;
 	char *palavra_chave = (char *) malloc(20 * sizeof(char));
@@ -142,7 +180,8 @@ int main(int argc, char *argv[]) {
 				scanf(" %c", &continua);
 			break;
 			case 3:
-			
+				printf("Palavra: "); scanf(" %s", palavra_chave);
+				leitura(ab, palavra_chave);
 			break;
 		}
 	} while (op >= 0 && op < 4);
